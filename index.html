@@ -100,4 +100,73 @@
         .authors { font-size: 0.95rem; color: var(--text-light); }
         
         .social-links { 
-            margin-top: 25px;
+            margin-top: 25px; 
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a { color: var(--text-light); transition: color 0.2s ease; }
+        .social-links a:hover { text-decoration: none; }
+        .social-links a.email:hover { color: #ea4335; }
+        .social-links a.twitter:hover { color: #1da1f2; }
+        .social-links a.linkedin:hover { color: #0a66c2; }
+        .social-links a.scholar:hover { color: #4285f4; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Lun Wang</h1>
+            <p>
+                I am a staff research scientist at <strong>Google DeepMind</strong>, working on Gemini post-training (Memory, Tool Use, and Audio). I received my PhD in computer science from UC Berkeley, advised by Prof. <a href="https://people.eecs.berkeley.edu/~dawnsong/">Dawn Song</a> in 2022. Previously, I earned my Bachelor's degree with honors from Peking University.
+            </p>
+            <div class="social-links">
+                <a href="mailto:wanglun@berkeley.edu" class="email" title="Email"><i class="fa fa-envelope-o"></i></a>
+                <a href="https://twitter.com/lunwang1996" class="twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" class="linkedin" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="image/fishing_headshot.jpg" alt="Lun Wang Headshot">
+        </div>
+    </header>
+
+    <section>
+        <div class="section-header">
+            <h2>Selected Publications</h2>
+            <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="header-link">
+                <i class="ai ai-google-scholar"></i> Full Google Scholar
+            </a>
+        </div>
+
+        <ul>
+            <li>
+                <a href="https://arxiv.org/pdf/2512.23988" class="pub-title">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a>
+                <span class="authors">Zhenyu Zhang, et al., <b>Lun Wang</b>.</span>
+            </li>
+            <li>
+                <a href="https://arxiv.org/pdf/2512.24693" class="pub-title">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a>
+                <span class="authors">Wenzhe Li, et al., <b>Lun Wang</b>.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section-header">
+            <h2>Talks</h2>
+        </div>
+        <ul>
+            <li><strong>2024 AAAI Spring Series @ Stanford:</strong> Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
+        </ul>
+    </section>
+
+</div>
+
+</body>
+</html>
