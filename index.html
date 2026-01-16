@@ -41,7 +41,7 @@
             padding: 40px 20px;
         }
 
-        /* Hero Section - Photo on Left */
+        /* Hero Section */
         .hero {
             display: flex;
             flex-direction: row;
@@ -51,14 +51,12 @@
         }
 
         .hero-image { flex: 0 0 300px; }
-
         .hero-image img {
             width: 100%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
-
         .hero-text { flex: 1; }
 
         h1 { font-size: 2.5rem; margin: 0 0 15px 0; color: #000; }
@@ -71,9 +69,8 @@
             margin-bottom: 20px;
         }
 
-        /* Special Header for Publications only */
+        /* Publication Specifics */
         .pub-section h2 { border-bottom: none; margin-bottom: 0; }
-        
         .publication-header {
             display: flex;
             flex-direction: column;
@@ -81,7 +78,6 @@
             padding-bottom: 12px;
             margin-bottom: 25px;
         }
-
         .scholar-row {
             font-size: 0.95rem;
             margin-top: 6px;
@@ -91,11 +87,18 @@
         }
         .scholar-row i { color: #4285f4; }
 
-        /* General List Styling (Talks/Service) */
-        ul { padding-left: 0; list-style-type: none; }
-        li { margin-bottom: 10px; }
+        /* General Bullet List (Talks/Service) */
+        .bullet-list { 
+            padding-left: 20px; /* Space for the bullet */
+            list-style-type: disc; /* Adds the bullet point */
+        }
+        .bullet-list li { 
+            margin-bottom: 8px; 
+            color: var(--text-main);
+        }
 
-        /* Publication-Specific List Styling */
+        /* Publication-Specific List (No Bullets) */
+        .pub-list { padding-left: 0; list-style-type: none; }
         .pub-list li { 
             margin-bottom: 25px; 
             padding-bottom: 20px;
@@ -105,7 +108,6 @@
 
         .pub-title { font-weight: 600; display: block; color: #111; font-size: 1.05rem; margin-bottom: 4px; }
         .authors { font-size: 0.95rem; color: var(--text-light); display: block; }
-        .venue { font-size: 0.9rem; font-style: italic; color: #555; display: block; margin-top: 4px; }
 
         .social-links { 
             margin-top: 25px; 
@@ -158,159 +160,31 @@
         </div>
 
         <ul class="pub-list">
-          <li><a href="https://arxiv.org/pdf/2512.23988">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a></br>
-          Zhenyu Zhang, Shujian Zhang, John Lambert, Wenxuan Zhou, Zhangyang Wang, Mingqing Chen, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</br>
-          </li>	
-        
-          <li><a href="https://arxiv.org/pdf/2512.24693">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a></br>
-          Wenzhe Li,*, Shujian Zhang, Wenxuan Zhou, John Lambert, Chi Jin, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</br>
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/2507.06256">Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World.</a></br>
-          Vinu Sankar Sadasivan, Soheil Feizi, Rajiv Mathews, <b>Lun Wang</b>.</br>
-          <b>EACL 2026</b>: The 19th Conference of the European Chapter of the Association for Computational Linguistics.
-          </li>	
-        
-          <li><a href="https://arxiv.org/abs/2410.06572">Can DeepFake Speech be Reliably Detected?</a></br>
-          Hongbin Liu*, Youzheng Chen, Arun Narayanan, Athula Balachandran, Pedro J. Moreno, <b>Lun Wang*</b>.</br>
-          </li>	
-        
-          <li><a href="https://dlsp2024.ieee-security.org/papers/dls2024-final7.pdf">Differentially Private Parameter-Efficient Fine-tuning for Large ASR Models.</a></br>
-          Hongbin Liu, <b>Lun Wang</b>, Om Thakkar, Abhradeep Guha Thakurta, Arun Narayanan.</br>
-          <b>Interspeech 2025</b>: The 26th edition of the Interspeech Conference.
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/2408.16204">Revisit Micro-batch Clipping: Adaptive Data Pruning via Gradient Manipulation</a></br>
-          <b>Lun Wang</b>.</br>
-          <b>ICLR 2025</b>: The Thirteenth International Conference on Learning Representations.
-          </li>	
-        
-          <!--<li><a href="https://arxiv.org/abs/2406.06979">AudioMarkBench: Benchmarking Robustness of Audio Watermarking.</a></br>
-          Hongbin Liu, Moyang Guo, Zhengyuan Jiang, <b>Lun Wang</b>, Neil Zhenqiang Gong.</br>
-          <b>Neurips Datasets & Benchmarks Track 2024</b>: Proceedings of The 38th Annual Conference on Neural Information Processing Systems.
-          </li>-->
-        
-          <li><a href="http://arxiv.org/abs/2406.02004">Efficiently Train ASR Models that Memorize Less and Perform Better with Per-core Clipping.</a></br>
-          <b>Lun Wang</b>, Om Thakkar, Zhong Meng, Nicole Rafidi, Rohit Prabhavalkar, Arun Narayanan.</br>
-          <b>Interspeech 2024</b>: 25th Interspeech Conference.
-          </li>
-        
-          <li><a href="https://eprint.iacr.org/2024/1065.pdf">AITIA: Efficient Secure Computation of Bivariate Causal Discovery.</a></br>
-          Truong Son Nguyen, <b>Lun Wang</b>, Evgenios M. Kornaropoulos, Ni Trieu.</br>
-          <b>CCS 2024</b>: The 31th ACM Conference on Computer and Communications Security.
-          </li>
-        
-          <!--<li><a href="https://eprint.iacr.org/2023/1909">Ratel: MPC-extensions for Smart Contracts.</a></br>
-          Yunqi Li, Kyle Soska, Zhen Huang, Sylvain Bellemare, Mikerah Quintyne-Collins, <b>Lun Wang</b>, Xiaoyuan Liu, Dawn Song, Andrew Miller.</br>
-          <b>AsiaCCS 2024</b>: The 19th ACM ASIA Conference on Computer and Communications Security.
-          </li>-->
-        
-          <li><a href="https://arxiv.org/abs/2310.11739">Unintended Memorization in Large ASR Models, and How to Mitigate It.</a></br>
-          <b>Lun Wang</b>, Om Thakkar, Rajiv Mathews.</br>
-          <b>ICASSP 2024</b>: 2024 IEEE International Conference on Acoustics, Speech and Signal Processing. (Acceptance rate: 45%)
-          </li>
-        
-          <!--<li><a href="https://ieeexplore.ieee.org/document/10447773">Noise Masking Attacks and Defenses for Pretrained Speech Models.</a></br>
-          Matthew Jagielski, Om Thakkar, <b>Lun Wang</b>.</br>
-          <b>ICASSP 2024</b>: 2024 IEEE International Conference on Acoustics, Speech and Signal Processing. (Acceptance rate: 45%)
-          </li>-->
-        
-          <!--<li><a href="https://henrygwb.github.io/publications/usenix23_2.pdf">PATROL: Provable Defense against Adversarial Policy in Two-player Games.</a></br>
-          Wenbo Guo, Xian Wu, <b>Lun Wang</b>, Xinyu Xing, Dawn Song.</br>
-          <b>Usenix 2023</b>: 32nd USENIX Security Symposium.
-          </li>-->
-        
-          <li><a href="https://arxiv.org/pdf/2302.09483.pdf">Why Is Public Pretraining Necessary for Private Model Training?</a> </br>
-          Arun Ganesh, Mahdi Haghifam, Milad Nasr, Sewoong Oh, Thomas Steinke, Om Thakkar, Abhradeep Thakurta, <b>Lun Wang</b>. (Authors are ordered alphabetically.)</br>
-          <b>ICML 2023</b>: Fortieth International Conference on Machine Learning. (Acceptance rate: 1827/6538=27.9%)
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/2105.14618">Secure Federated Correlation Test and Entropy Estimation.</a> </br>
-          Qi Pang*, <b>Lun Wang*</b>, Shuai Wang, Wenting Zheng, Dawn Song.</br>
-          <b>ICML 2023</b>: Fortieth International Conference on Machine Learning. (Acceptance rate: 1827/6538=27.9%)</br>
-          <!--<b>PPAI Workshop @ AAAI 2022</b>: The Third AAAI Workshop on Privacy-Preserving Artificial Intelligence.-->
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/2205.11765">Byzantine-Robust Federated Learning with Optimal Rates and Privacy Guarantee.</a> <a href="https://github.com/wanglun1996/secure-robust-federated-learning">[code]</a></br>
-          Banghua Zhu*, <b>Lun Wang*</b>, Qi Pang*, Shuai Wang, Jiantao Jiao, Dawn Song, Michael I.Jordan.</br>
-          <b>AISTATS 2023</b>: Artificial Intelligence and Statistics 2023. (Acceptance rate: 29%)</br>
-          <!--<b>SpicyFL @ Neurips 2020</b>: NeurIPS Workshop on Scalability, Privacy, and Security in Federated Learning.-->
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/2105.12363">Differentially Private Fractional Frequency Moments Estimation with Polylogarithmic Space.</a> </br>
-          <b>Lun Wang</b>, Iosif Pinelis, Dawn Song.</br>
-          <b>ICLR 2022</b>: the 10th International Conference on Learning Representations. (Acceptance rate: 1095/3391=32.3%))</br>
-          <!--<b>PPAI Workshop @ AAAI 2022</b>: The 3rd AAAI Workshop on Privacy-Preserving Artificial Intelligence.</br>-->
-          <!--<b>TPDP Workshop @ ICML 2022</b>: Theory and Practice of Differential Privacy.-->
-          </li>
-        
-          <li><a href="https://www.usenix.org/system/files/sec22summer_wang-lun.pdf">PRIVGUARD: Privacy Regulation Compliance Made Easier.</a> </br>
-          <b>Lun Wang</b>, Usmann Khan, Joseph Near, Qi Pang, Jithendaraa Subramanian, Neel Somani, Peng Gao, Andrew Low, Dawn Song.</br>
-          <b>Usenix Security'22</b>: the 31th Usenix Security Symposium. (Acceptance rate: 18%)
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/2105.00579">BACKDOORL: Backdoor Attack against Competitive Reinforcement Learning.</a> </br>
-          <b>Lun Wang</b>, Zaynah Javed, Xian Wu, Wenbo Guo, Xinyu Xing, Dawn Song.</br>
-          <b>IJCAI'21</b>: the 30th International Joint Conference on Artificial Intelligence. (Acceptance rate: 587/4204=13.9%)
-          </li>
-        
-          <!--<li><a href="publication/infocom19.pdf">SEAD counter: Self-adaptive counters with different counting ranges.</a></br>
-          Xilai Liu, Yan Xu, Peng Liu, Tong Yang, Jiaqi Xu, <b>Lun Wang</b>, Gaogang Xie, Xiaoming Li, Steve Uhlig.</br>
-          <b>TON'21</b>: IEEE/ACM Transactions on Networking, 2021.
-          </li>-->
-        
-          <li><a href="https://arxiv.org/abs/2006.08598">Towards practical differentially private causal graph discovery.</a> <a href="https://github.com/sunblaze-ucb/Priv-PC-Differentially-Private-Causal-Graph-Discovery">[code]</a></br>
-          <b>Lun Wang</b>, Qi Pang, Dawn Song.</br>
-          <b>NeurIPS'20</b>: Proceedings of The 34th Annual Conference on Neural Information Processing Systems. (Acceptance rate: 1900/9454=20.1%)
-          </li>
-        
-          <li><a href="https://arxiv.org/abs/1908.01763">Towards Inspecting and Eliminating Trojan Backdoors in Deep Neural Networks.</a></br>
-          Wenbo Guo*, <b>Lun Wang*</b>, Yan Xu, Xinyu Xing, Min Du, Dawn Song.</br>
-          <b>ICDM'20</b>: 20th IEEE International Conference on Data Mining. (Acceptance rate: 91/930=9.8%)
-          </li>
-        
-          <!--<li><a href="https://eprint.iacr.org/2019/017.pdf">CHURP: Dynamic-committee proactive secret sharing.</a> <a href="https://www.churp.io/">[project page]</a>/<a href="https://github.com/CHURPTeam/CHURP">[code]</a></br>
-          SKD Maram, Fan Zhang, <b>Lun Wang</b>, Andrew Low, Yupeng Zhang, Ari Juels, Dawn Song.</br>
-          <b>CCS'19</b>: Computer and Communications Security 2019. (Acceptance Rate: 149/934=16.0%)
-          </li>-->
-        
-          <li><a href="publication/oopsla19.pdf">DUET: An expressive higher-order language and linear type system for statically enforcing differential privacy.</a> <a href="https://github.com/uvm-plaid/duet">[code]</a></br>
-          Joseph Near, David Darais, Chike Abuah, Tim Stevens, Pranav Gaddamadugu, <b>Lun Wang</b>, Neel Somani, Mu Zhang, Nikhil Sharma, Alex Shan, Dawn Song.</br>
-          <b>OOPSLA'19</b>: Proceedings of the ACM on Programming Languages, 2019. <font color="red">Distinguished Paper Award. (2.5% of all submissions)</font>
-          </li>
-        
-          <li><a href="publication/sp19.pdf">Towards practical differentially private convex optimization.</a> <a href="https://github.com/sunblaze-ucb/dpml-benchmark">[code]</a></br>
-          Roger Iyengar, Joseph Near, Dawn Song, Om Thakkar, Abhradeep Thakurta, <b>Lun Wang</b>. (Authors are ordered alphabetically.)</br>
-          <b>Oakland'19</b>: 2019 IEEE Symposium on Security and Privacy. (Acceptance rate: 12%)
-          </li>
-        
-          <!--<li><a href="publication/infocom19.pdf">A generic technique for sketches to adapt to different counting ranges.</a></br>
-          Tong Yang, Jiaqi Xu, Xilai Liu, Peng Liu, <b>Lun Wang</b>, Jun Bi, Xiaoming Li.</br>
-          <b>INFOCOM'19</b>: IEEE Conference on Computer Communications.
-          </li>-->
+            <li>
+                <a href="https://arxiv.org/pdf/2512.23988" class="pub-title">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a>
+                <span class="authors">Zhenyu Zhang, et al., <b>Lun Wang</b>.</span>
+            </li>
+            <li>
+                <a href="https://arxiv.org/pdf/2512.24693" class="pub-title">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a>
+                <span class="authors">Wenzhe Li, et al., <b>Lun Wang</b>.</span>
+            </li>
         </ul>
     </section>
 
     <section>
         <h2>Talks</h2>
-        <ul>
-          <li>2024 Federated Learning on the Edge -- AAAI Spring Series Symposium 2024 @ Stanford: Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
-          <li>2021 Workshop on Federated Learning and Analytics @ Google: Federated frequency moments estimation and its application in feature selection</li>
-          <li>2020 IC3 Blockchain Camp: <a href="https://www.youtube.com/watch?v=CoULbcqDxtg">"Aegis: Privacy-Preserving Data Analysis Framework</a></li>
-          <li>2019 San Francisco Blockchain Week: <a href="https://www.youtube.com/watch?v=13k37_8cU0U">Dynamic-Committee Proactive Secret Sharing</a></li>
-          <li>2019 Large-Scale Consensus and Blockchains @ Simons Institute: <a href="https://simons.berkeley.edu/talks/tba-108">CHURP: Dynamic-Committee Proactive Secret Sharing</a></li>
+        <ul class="bullet-list">
+            <li><strong>2024 AAAI Spring Series @ Stanford:</strong> Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
+            <li><strong>2021 Google FL Workshop:</strong> Federated frequency moments estimation</li>
         </ul>
     </section>
 
     <section>
         <h2>Service</h2>
-        <ul>
-          <!--<li>Journal Reviewer: Journal of Causal Inference, IEEE Transactions on Pattern Analysis and Machine Intelligence, IEEE Transactions on Dependable and Secure Computing, Transactions on Machine Learning Research, Frontiers in Computer Science</li>
-          <li>Conference Reviewer: AAAI 2024, Interspeech 2024, ITCS 2023, RANDOM 2023, AISTATS 2022-2024, ICML 2021-2024, ICLR 2022-2024, Neurips 2021-2024, CCS 2021/2023, WWW 2021, ECML-PKDD 2021, PoPETS 2021-2024</li>-->
-          <li>Area Chair: <a href="https://2025.aclweb.org/">ACL ARR 2025</a></li>
-          <li>Program Committee: <a href="https://www.usenix.org/conference/usenixsecurity26">Usenix Security 2026</a>, <a href="https://www.sigsac.org/ccs/CCS2025/">CCS 2025</a>, <a href="https://www.sigsac.org/ccs/CCS2023/">CCS 2023</a></li>
-          <li>Workshop Committee: <a href="https://sites.google.com/corp/view/genai-watermark/">WMARK'25</a>, <a href="https://federated-learning.org/fl-asiaccs-2025/">FL-AsiaCCS’25</a>, <a href="https://fedkdd.github.io/">FedKDD 2024</a>, <a href="https://tpdp.journalprivacyconfidentiality.org/2024/">TPDP 2024</a>, <a href="https://fl-icml2023.github.io/">FL @ ICML 2023</a>, <a href="https://sites.google.com/corp/view/spai2020/home#h.p_O6CEOUMM60p0">SPAI 2020</a>, <a href="https://infocom2020.ieee-infocom.org/workshop-networking-algorithms.html">WNA 2020</a></li>
-          <li>Reviewer: Neurips, ICML, ICLR, AISTATS, Interspeech, ITCS'23, RANDOM'23, Journal of Causal Inference, IEEE Transactions on Pattern Analysis and Machine Intelligence, IEEE Transactions on Dependable and Secure Computing, Transactions on Machine Learning Research, Frontiers in Computer Science</li>
+        <ul class="bullet-list">
+            <li><strong>Area Chair:</strong> ACL ARR 2025</li>
+            <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025</li>
+            <li><strong>Reviewer:</strong> NeurIPS, ICML, ICLR, AISTATS, etc.</li>
         </ul>
     </section>
 
