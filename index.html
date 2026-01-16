@@ -41,6 +41,35 @@
             padding: 40px 20px;
         }
 
+        /* Flexbox for the heading to put link on the right */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-top: var(--section-spacing);
+            margin-bottom: 20px;
+        }
+
+        /* Remove original h2 border/margin since the container handles it now */
+        h2 { 
+            font-size: 1.5rem; 
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .header-link {
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+        
+        .header-link i {
+            margin-right: 4px;
+            color: #4285f4;
+        }
+
         .hero {
             display: flex;
             flex-direction: row;
@@ -51,36 +80,14 @@
 
         @media (max-width: 600px) {
             .hero { flex-direction: column-reverse; text-align: center; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
 
-        .hero-text { flex: 2; }
-        .hero-image { flex: 1; text-align: right; }
         .hero-image img {
             width: 200px;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        h1 { font-size: 2.5rem; margin-bottom: 10px; color: #000; }
-        h2 { 
-            font-size: 1.5rem; 
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 8px; 
-            margin-top: var(--section-spacing);
-            margin-bottom: 10px; /* Reduced margin to keep the link close */
-        }
-
-        .scholar-sublink {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            color: var(--link-color);
-        }
-        
-        .scholar-sublink i {
-            margin-right: 5px;
-            color: #4285f4; /* Scholar Blue */
         }
 
         a { color: var(--link-color); text-decoration: none; }
@@ -91,96 +98,6 @@
 
         .pub-title { font-weight: 600; display: block; color: #111; }
         .authors { font-size: 0.95rem; color: var(--text-light); }
-        .venue { font-size: 0.95rem; font-style: italic; color: #444; }
-        .award { color: #d93025; font-weight: 600; font-size: 0.9rem; }
-
+        
         .social-links { 
-            margin-top: 25px; 
-            display: flex;
-            gap: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .social-links a { 
-            color: var(--text-light); 
-            transition: color 0.2s ease;
-        }
-        
-        .social-links a:hover { color: var(--link-color); text-decoration: none; }
-        .social-links a.email:hover { color: #ea4335; }
-        .social-links a.twitter:hover { color: #1da1f2; }
-        .social-links a.linkedin:hover { color: #0a66c2; }
-        .social-links a.scholar:hover { color: #4285f4; }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-    
-    <header class="hero">
-        <div class="hero-text">
-            <h1>Lun Wang</h1>
-            <p>
-                I am a staff research scientist at <strong>Google DeepMind</strong>, working on Gemini post-training (Memory, Tool Use, and Audio). I received my PhD in computer science from UC Berkeley, advised by Prof. <a href="https://people.eecs.berkeley.edu/~dawnsong/">Dawn Song</a> in 2022. Previously, I earned my Bachelor's degree with honors from Peking University.
-            </p>
-            <div class="social-links">
-                <a href="mailto:wanglun@berkeley.edu" class="email" title="Email"><i class="fa fa-envelope-o"></i></a>
-                <a href="https://twitter.com/lunwang1996" class="twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" class="linkedin" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="image/fishing_headshot.jpg" alt="Lun Wang Headshot">
-        </div>
-    </header>
-
-    <section>
-        <h2>Selected Publications</h2>
-        <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar-sublink">
-            <i class="ai ai-google-scholar"></i> Full Google Scholar Profile
-        </a>
-
-        <ul>
-            <li>
-                <a href="https://arxiv.org/pdf/2512.23988" class="pub-title">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a>
-                <span class="authors">Zhenyu Zhang, et al., <b>Lun Wang</b>.</span>
-            </li>
-            <li>
-                <a href="https://arxiv.org/pdf/2512.24693" class="pub-title">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a>
-                <span class="authors">Wenzhe Li, et al., <b>Lun Wang</b>.</span>
-            </li>
-            <li>
-                <a href="https://arxiv.org/abs/2507.06256" class="pub-title">Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World.</a>
-                <span class="authors">Vinu Sankar Sadasivan, Soheil Feizi, Rajiv Mathews, <b>Lun Wang</b>.</span><br>
-                <span class="venue">EACL 2026</span>
-            </li>
-            <li>
-                <a href="publication/oopsla19.pdf" class="pub-title">DUET: An expressive higher-order language and linear type system for statically enforcing differential privacy.</a>
-                <span class="authors">Joseph Near, et al., <b>Lun Wang</b>.</span><br>
-                <span class="award">Distinguished Paper Award (Top 2.5% of submissions)</span>
-            </li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Talks</h2>
-        <ul>
-            <li><strong>2024 AAAI Spring Series @ Stanford:</strong> Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
-            <li><strong>2020 IC3 Blockchain Camp:</strong> <a href="https://www.youtube.com/watch?v=CoULbcqDxtg">Aegis: Privacy-Preserving Data Analysis Framework</a></li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Service</h2>
-        <ul>
-            <li><strong>Area Chair:</strong> ACL ARR 2025</li>
-            <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025</li>
-        </ul>
-    </section>
-
-</div>
-
-</body>
-</html>
+            margin-top: 25px;
