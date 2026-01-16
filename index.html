@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <style>
+    <style>        
         :root {
             --text-main: #333;
             --text-light: #666;
@@ -89,6 +89,28 @@
         .award { color: #d93025; font-weight: 600; font-size: 0.9rem; }
 
         .gs-link { font-size: 0.9rem; font-weight: normal; margin-left: 10px; }
+        .social-links { 
+            margin-top: 25px; 
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem; /* Makes the icons slightly larger and clickable */
+        }
+        
+        .social-links a { 
+            color: var(--text-light); 
+            transition: color 0.2s ease;
+        }
+        
+        .social-links a:hover { 
+            color: var(--link-color); 
+            text-decoration: none; 
+        }
+        
+        /* Specific icon colors on hover for a premium feel */
+        .social-links a.email:hover { color: #ea4335; }
+        .social-links a.twitter:hover { color: #1da1f2; }
+        .social-links a.linkedin:hover { color: #0a66c2; }
+        .social-links a.scholar:hover { color: #4285f4; }
 
     </style>
 </head>
@@ -104,13 +126,21 @@
                 I am a staff research scientist at <strong>Google DeepMind</strong>, working on Gemini post-training (Memory, Tool Use, and Audio). I received my PhD in computer science from UC Berkeley, advised by Prof. <a href="https://people.eecs.berkeley.edu/~dawnsong/">Dawn Song</a> in 2022. Previously, I earned my Bachelor's degree with honors from Peking University.
             </p>
             <div class="social-links">
-                <a href="mailto:wanglun@berkeley.edu">Email</a> &nbsp;/&nbsp;
-                <a href="https://twitter.com/lunwang1996">Twitter</a> &nbsp;/&nbsp;
-                <a href="https://www.linkedin.com/in/lun-wang-a52951237/">LinkedIn</a>
+                <a href="mailto:wanglun@berkeley.edu" class="email" title="Email">
+                    <i class="fa fa-envelope-o"></i>
+                </a>
+                <a href="https://twitter.com/lunwang1996" class="twitter" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" class="linkedin" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar">
+                    <i class="ai ai-google-scholar"></i> </a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="image/fishing_headshot.jpg" alt="Lun Wang Headshot">
+            <img src="image/headshot.jpg" alt="Lun Wang Headshot">
         </div>
     </header>
 
