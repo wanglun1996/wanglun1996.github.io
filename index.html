@@ -41,7 +41,6 @@
             padding: 40px 20px;
         }
 
-        /* Hero Section */
         .hero {
             display: flex;
             flex-direction: row;
@@ -55,9 +54,7 @@
         }
 
         .hero-text { flex: 2; }
-        
         .hero-image { flex: 1; text-align: right; }
-        
         .hero-image img {
             width: 200px;
             height: auto;
@@ -77,11 +74,7 @@
         a { color: var(--link-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        .social-links { margin-top: 20px; font-weight: 500; }
-
-        /* List Styling */
         ul { padding-left: 0; list-style-type: none; }
-        
         li { margin-bottom: 18px; }
 
         .pub-title { font-weight: 600; display: block; color: #111; }
@@ -89,12 +82,11 @@
         .venue { font-size: 0.95rem; font-style: italic; color: #444; }
         .award { color: #d93025; font-weight: 600; font-size: 0.9rem; }
 
-        .gs-link { font-size: 0.9rem; font-weight: normal; margin-left: 10px; }
         .social-links { 
             margin-top: 25px; 
             display: flex;
             gap: 20px;
-            font-size: 1.5rem; /* Makes the icons slightly larger and clickable */
+            font-size: 1.5rem;
         }
         
         .social-links a { 
@@ -107,11 +99,19 @@
             text-decoration: none; 
         }
         
-        /* Specific icon colors on hover for a premium feel */
         .social-links a.email:hover { color: #ea4335; }
         .social-links a.twitter:hover { color: #1da1f2; }
         .social-links a.linkedin:hover { color: #0a66c2; }
         .social-links a.scholar:hover { color: #4285f4; }
+
+        /* Style for the full scholar link at the bottom */
+        .full-scholar-footer {
+            margin-top: 15px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
     </style>
 </head>
@@ -137,7 +137,8 @@
                     <i class="fa fa-linkedin"></i>
                 </a>
                 <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar">
-                    <i class="ai ai-google-scholar"></i> </a>
+                    <i class="ai ai-google-scholar"></i>
+                </a>
             </div>
         </div>
         <div class="hero-image">
@@ -146,7 +147,7 @@
     </header>
 
     <section>
-        <h2>Selected Publications <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="gs-link">[Full Google Scholar]</a></h2>
+        <h2>Selected Publications</h2>
         <ul>
             <li>
                 <a href="https://arxiv.org/pdf/2512.23988" class="pub-title">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a>
@@ -186,7 +187,12 @@
                 <span class="authors">Joseph Near, et al., <b>Lun Wang</b>, et al.</span><br>
                 <span class="award">Distinguished Paper Award (Top 2.5% of submissions)</span>
             </li>
-            </ul>
+        </ul>
+        
+        <div class="full-scholar-footer">
+            <i class="ai ai-google-scholar" style="color: #4285f4;"></i> 
+            <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en">Full Google Scholar Profile</a>
+        </div>
     </section>
 
     <section>
