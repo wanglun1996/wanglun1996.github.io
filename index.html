@@ -16,55 +16,102 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <style>
-        /* ... existing root variables ... */
-    
+    <style>        
+        :root {
+            --text-main: #333;
+            --text-light: #666;
+            --link-color: #0066cc;
+            --bg-color: #ffffff;
+            --section-spacing: 40px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
         .hero {
             display: flex;
             flex-direction: row;
-            align-items: flex-start; /* Aligns top of text with top of image */
-            justify-content: space-between; 
-            gap: 30px; /* Reduced gap to remove that "blank" feeling */
-            margin-bottom: 40px;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: var(--section-spacing);
         }
-    
-        .hero-text { 
-            flex: 3; /* Gives text more weight */
+
+        @media (max-width: 600px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
         }
+
+        .hero-text { flex: 2; }
         
-        .hero-image { 
-            flex: 1; 
-            display: flex;
-            justify-content: flex-end; /* Pushes image to the far right */
-        }
+        .hero-image { flex: 1; text-align: right; }
         
         .hero-image img {
-            width: 260px; /* Increased size */
+            width: 200px;
             height: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
-    
-        @media (max-width: 768px) {
-            .hero { 
-                flex-direction: column-reverse; 
-                text-align: center; 
-                align-items: center;
-            }
-            .hero-image { justify-content: center; }
-            .hero-image img { width: 200px; } /* Slightly smaller on mobile */
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; color: #000; }
+        h2 { 
+            font-size: 1.5rem; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 8px; 
+            margin-top: var(--section-spacing);
+            margin-bottom: 20px;
         }
-    
-        /* Icon Styles */
+
+        a { color: var(--link-color); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .social-links { margin-top: 20px; font-weight: 500; }
+
+        /* List Styling */
+        ul { padding-left: 0; list-style-type: none; }
+        
+        li { margin-bottom: 18px; }
+
+        .pub-title { font-weight: 600; display: block; color: #111; }
+        .authors { font-size: 0.95rem; color: var(--text-light); }
+        .venue { font-size: 0.95rem; font-style: italic; color: #444; }
+        .award { color: #d93025; font-weight: 600; font-size: 0.9rem; }
+
+        .gs-link { font-size: 0.9rem; font-weight: normal; margin-left: 10px; }
         .social-links { 
             margin-top: 25px; 
             display: flex;
             gap: 20px;
-            font-size: 1.6rem;
+            font-size: 1.5rem; /* Makes the icons slightly larger and clickable */
         }
-        .social-links a { color: #666; transition: 0.2s; }
-        .social-links a:hover { color: #0066cc; }
+        
+        .social-links a { 
+            color: var(--text-light); 
+            transition: color 0.2s ease;
+        }
+        
+        .social-links a:hover { 
+            color: var(--link-color); 
+            text-decoration: none; 
+        }
+        
+        /* Specific icon colors on hover for a premium feel */
+        .social-links a.email:hover { color: #ea4335; }
+        .social-links a.twitter:hover { color: #1da1f2; }
+        .social-links a.linkedin:hover { color: #0a66c2; }
+        .social-links a.scholar:hover { color: #4285f4; }
+
     </style>
 </head>
 
@@ -74,19 +121,26 @@
     
     <header class="hero">
         <div class="hero-text">
-            <h1 style="margin-top: 0;">Lun Wang</h1>
+            <h1>Lun Wang</h1>
             <p>
                 I am a staff research scientist at <strong>Google DeepMind</strong>, working on Gemini post-training (Memory, Tool Use, and Audio). I received my PhD in computer science from UC Berkeley, advised by Prof. <a href="https://people.eecs.berkeley.edu/~dawnsong/">Dawn Song</a> in 2022. Previously, I earned my Bachelor's degree with honors from Peking University.
             </p>
             <div class="social-links">
-                <a href="mailto:wanglun@berkeley.edu" title="Email"><i class="fa fa-envelope-o"></i></a>
-                <a href="https://twitter.com/lunwang1996" title="Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                <a href="mailto:wanglun@berkeley.edu" class="email" title="Email">
+                    <i class="fa fa-envelope-o"></i>
+                </a>
+                <a href="https://twitter.com/lunwang1996" class="twitter" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" class="linkedin" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar">
+                    <i class="ai ai-google-scholar"></i> </a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="image/headshot.jpg" alt="Lun Wang Headshot">
+            <img src="image/fishing_headshot.jpg" alt="Lun Wang Headshot">
         </div>
     </header>
 
