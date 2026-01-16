@@ -41,7 +41,7 @@
             padding: 40px 20px;
         }
 
-        /* Hero Section */
+        /* Hero Section - Photo on Left */
         .hero {
             display: flex;
             flex-direction: row;
@@ -69,14 +69,14 @@
             margin-bottom: 20px;
         }
 
-        /* Publication Specifics */
+        /* Publication Header Stacking */
         .pub-section h2 { border-bottom: none; margin-bottom: 0; }
         .publication-header {
             display: flex;
             flex-direction: column;
             border-bottom: 1px solid #eee;
             padding-bottom: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         .scholar-row {
             font-size: 0.95rem;
@@ -87,24 +87,29 @@
         }
         .scholar-row i { color: #4285f4; }
 
-        /* General Bullet List (Talks/Service) */
+        /* General Bullet List (Talks/Service) - NO HOVER EFFECT */
         .bullet-list { 
-            padding-left: 20px; /* Space for the bullet */
-            list-style-type: disc; /* Adds the bullet point */
+            padding-left: 20px; 
+            list-style-type: disc; 
         }
-        .bullet-list li { 
-            margin-bottom: 8px; 
-            color: var(--text-main);
-        }
+        .bullet-list li { margin-bottom: 8px; }
 
-        /* Publication-Specific List (No Bullets) */
-        .pub-list { padding-left: 0; list-style-type: none; }
+        /* Publication List - WITH HOVER EFFECT */
+        .pub-list { 
+            padding-left: 0; 
+            list-style-type: none; 
+        }
         .pub-list li { 
-            margin-bottom: 25px; 
-            padding-bottom: 20px;
+            margin-bottom: 10px; 
+            padding: 15px;
+            margin-left: -15px;
+            margin-right: -15px;
             border-bottom: 1px solid #f5f5f5;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
         }
         .pub-list li:last-child { border-bottom: none; }
+        .pub-list li:hover { background-color: #f8f9fa; }
 
         .pub-title { font-weight: 600; display: block; color: #111; font-size: 1.05rem; margin-bottom: 4px; }
         .authors { font-size: 0.95rem; color: var(--text-light); display: block; }
@@ -121,6 +126,7 @@
         @media (max-width: 768px) {
             .hero { flex-direction: column; align-items: center; }
             .hero-image { width: 250px; }
+            .pub-list li { margin-left: 0; margin-right: 0; }
         }
 
         a { color: var(--link-color); text-decoration: none; }
@@ -184,7 +190,6 @@
         <ul class="bullet-list">
             <li><strong>Area Chair:</strong> ACL ARR 2025</li>
             <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025</li>
-            <li><strong>Reviewer:</strong> NeurIPS, ICML, ICLR, AISTATS, etc.</li>
         </ul>
     </section>
 
