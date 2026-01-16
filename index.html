@@ -27,8 +27,7 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Inter', 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
@@ -41,7 +40,7 @@
             padding: 40px 20px;
         }
 
-        /* Hero Section - Photo on Left */
+        /* Hero Section */
         .hero {
             display: flex;
             flex-direction: row;
@@ -69,7 +68,7 @@
             margin-bottom: 20px;
         }
 
-        /* Publication Header Stacking */
+        /* Publication Header */
         .pub-section h2 { border-bottom: none; margin-bottom: 0; }
         .publication-header {
             display: flex;
@@ -82,23 +81,15 @@
             font-size: 0.95rem;
             margin-top: 6px;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: center; gap: 8px;
         }
         .scholar-row i { color: #4285f4; }
 
-        /* General Bullet List (Talks/Service) - NO HOVER EFFECT */
-        .bullet-list { 
-            padding-left: 20px; 
-            list-style-type: disc; 
-        }
+        /* Lists */
+        .bullet-list { padding-left: 20px; list-style-type: disc; }
         .bullet-list li { margin-bottom: 8px; }
 
-        /* Publication List - WITH HOVER EFFECT */
-        .pub-list { 
-            padding-left: 0; 
-            list-style-type: none; 
-        }
+        .pub-list { padding-left: 0; list-style-type: none; }
         .pub-list li { 
             margin-bottom: 10px; 
             padding: 15px;
@@ -111,16 +102,15 @@
         .pub-list li:last-child { border-bottom: none; }
         .pub-list li:hover { background-color: #f8f9fa; }
 
-        .pub-title { font-weight: 600; display: block; color: #111; font-size: 1.05rem; margin-bottom: 4px; }
-        .authors { font-size: 0.95rem; color: var(--text-light); display: block; }
+        .pub-list a { font-weight: 600; color: #111; }
+        .pub-list a:hover { color: var(--link-color); text-decoration: underline; }
 
         .social-links { 
             margin-top: 25px; 
-            display: flex;
-            gap: 20px;
+            display: flex; gap: 20px;
             font-size: 1.4rem;
         }
-        .social-links a { color: #888; transition: color 0.2s; }
+        .social-links a { color: #888; transition: color 0.2s; font-weight: normal; }
         .social-links a:hover { color: var(--link-color); text-decoration: none; }
 
         @media (max-width: 768px) {
@@ -130,7 +120,6 @@
         }
 
         a { color: var(--link-color); text-decoration: none; }
-        a:hover { text-decoration: underline; }
     </style>
 </head>
 
@@ -166,13 +155,96 @@
         </div>
 
         <ul class="pub-list">
-            <li>
-                <a href="https://arxiv.org/pdf/2512.23988" class="pub-title">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a>
-                <span class="authors">Zhenyu Zhang, et al., <b>Lun Wang</b>.</span>
+            <li><a href="https://arxiv.org/pdf/2512.23988">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a><br>
+                Zhenyu Zhang, Shujian Zhang, John Lambert, Wenxuan Zhou, Zhangyang Wang, Mingqing Chen, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.
             </li>
-            <li>
-                <a href="https://arxiv.org/pdf/2512.24693" class="pub-title">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a>
-                <span class="authors">Wenzhe Li, et al., <b>Lun Wang</b>.</span>
+
+            <li><a href="https://arxiv.org/pdf/2512.24693">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a><br>
+                Wenzhe Li,*, Shujian Zhang, Wenxuan Zhou, John Lambert, Chi Jin, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2507.06256">Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World.</a><br>
+                Vinu Sankar Sadasivan, Soheil Feizi, Rajiv Mathews, <b>Lun Wang</b>.<br>
+                <b>EACL 2026</b>: The 19th Conference of the European Chapter of the Association for Computational Linguistics.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2410.06572">Can DeepFake Speech be Reliably Detected?</a><br>
+                Hongbin Liu*, Youzheng Chen, Arun Narayanan, Athula Balachandran, Pedro J. Moreno, <b>Lun Wang*</b>.
+            </li>
+
+            <li><a href="https://dlsp2024.ieee-security.org/papers/dls2024-final7.pdf">Differentially Private Parameter-Efficient Fine-tuning for Large ASR Models.</a><br>
+                Hongbin Liu, <b>Lun Wang</b>, Om Thakkar, Abhradeep Guha Thakurta, Arun Narayanan.<br>
+                <b>Interspeech 2025</b>: The 26th edition of the Interspeech Conference.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2408.16204">Revisit Micro-batch Clipping: Adaptive Data Pruning via Gradient Manipulation</a><br>
+                <b>Lun Wang</b>.<br>
+                <b>ICLR 2025</b>: The Thirteenth International Conference on Learning Representations.
+            </li>
+
+            <li><a href="http://arxiv.org/abs/2406.02004">Efficiently Train ASR Models that Memorize Less and Perform Better with Per-core Clipping.</a><br>
+                <b>Lun Wang</b>, Om Thakkar, Zhong Meng, Nicole Rafidi, Rohit Prabhavalkar, Arun Narayanan.<br>
+                <b>Interspeech 2024</b>: 25th Interspeech Conference.
+            </li>
+
+            <li><a href="https://eprint.iacr.org/2024/1065.pdf">AITIA: Efficient Secure Computation of Bivariate Causal Discovery.</a><br>
+                Truong Son Nguyen, <b>Lun Wang</b>, Evgenios M. Kornaropoulos, Ni Trieu.<br>
+                <b>CCS 2024</b>: The 31th ACM Conference on Computer and Communications Security.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2310.11739">Unintended Memorization in Large ASR Models, and How to Mitigate It.</a><br>
+                <b>Lun Wang</b>, Om Thakkar, Rajiv Mathews.<br>
+                <b>ICASSP 2024</b>: 2024 IEEE International Conference on Acoustics, Speech and Signal Processing.
+            </li>
+
+            <li><a href="https://arxiv.org/pdf/2302.09483.pdf">Why Is Public Pretraining Necessary for Private Model Training?</a><br>
+                Arun Ganesh, Mahdi Haghifam, Milad Nasr, Sewoong Oh, Thomas Steinke, Om Thakkar, Abhradeep Thakurta, <b>Lun Wang</b>.<br>
+                <b>ICML 2023</b>: Fortieth International Conference on Machine Learning.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2105.14618">Secure Federated Correlation Test and Entropy Estimation.</a><br>
+                Qi Pang*, <b>Lun Wang*</b>, Shuai Wang, Wenting Zheng, Dawn Song.<br>
+                <b>ICML 2023</b>: Fortieth International Conference on Machine Learning.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2205.11765">Byzantine-Robust Federated Learning with Optimal Rates and Privacy Guarantee.</a> <a href="https://github.com/wanglun1996/secure-robust-federated-learning">[code]</a><br>
+                Banghua Zhu*, <b>Lun Wang*</b>, Qi Pang*, Shuai Wang, Jiantao Jiao, Dawn Song, Michael I.Jordan.<br>
+                <b>AISTATS 2023</b>: Artificial Intelligence and Statistics 2023.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2105.12363">Differentially Private Fractional Frequency Moments Estimation with Polylogarithmic Space.</a><br>
+                <b>Lun Wang</b>, Iosif Pinelis, Dawn Song.<br>
+                <b>ICLR 2022</b>: the 10th International Conference on Learning Representations.
+            </li>
+
+            <li><a href="https://www.usenix.org/system/files/sec22summer_wang-lun.pdf">PRIVGUARD: Privacy Regulation Compliance Made Easier.</a><br>
+                <b>Lun Wang</b>, Usmann Khan, Joseph Near, Qi Pang, Jithendaraa Subramanian, Neel Somani, Peng Gao, Andrew Low, Dawn Song.<br>
+                <b>Usenix Security'22</b>: the 31th Usenix Security Symposium.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2105.00579">BACKDOORL: Backdoor Attack against Competitive Reinforcement Learning.</a><br>
+                <b>Lun Wang</b>, Zaynah Javed, Xian Wu, Wenbo Guo, Xinyu Xing, Dawn Song.<br>
+                <b>IJCAI'21</b>: the 30th International Joint Conference on Artificial Intelligence.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/2006.08598">Towards practical differentially private causal graph discovery.</a> <a href="https://github.com/sunblaze-ucb/Priv-PC-Differentially-Private-Causal-Graph-Discovery">[code]</a><br>
+                <b>Lun Wang</b>, Qi Pang, Dawn Song.<br>
+                <b>NeurIPS'20</b>: 34th Annual Conference on Neural Information Processing Systems.
+            </li>
+
+            <li><a href="https://arxiv.org/abs/1908.01763">Towards Inspecting and Eliminating Trojan Backdoors in Deep Neural Networks.</a><br>
+                Wenbo Guo*, <b>Lun Wang*</b>, Yan Xu, Xinyu Xing, Min Du, Dawn Song.<br>
+                <b>ICDM'20</b>: 20th IEEE International Conference on Data Mining.
+            </li>
+
+            <li><a href="publication/oopsla19.pdf">DUET: An expressive higher-order language and linear type system for statically enforcing differential privacy.</a> <a href="https://github.com/uvm-plaid/duet">[code]</a><br>
+                Joseph Near, et al., <b>Lun Wang</b>, et al.<br>
+                <b>OOPSLA'19</b>: Proceedings of the ACM on Programming Languages. <font color="red">Distinguished Paper Award.</font>
+            </li>
+
+            <li><a href="publication/sp19.pdf">Towards practical differentially private convex optimization.</a> <a href="https://github.com/sunblaze-ucb/dpml-benchmark">[code]</a><br>
+                Roger Iyengar, Joseph Near, Dawn Song, Om Thakkar, Abhradeep Thakurta, <b>Lun Wang</b>.<br>
+                <b>Oakland'19</b>: 2019 IEEE Symposium on Security and Privacy.
             </li>
         </ul>
     </section>
@@ -182,6 +254,7 @@
         <ul class="bullet-list">
             <li><strong>2024 AAAI Spring Series @ Stanford:</strong> Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
             <li><strong>2021 Google FL Workshop:</strong> Federated frequency moments estimation</li>
+            <li><strong>2020 IC3 Blockchain Camp:</strong> <a href="https://www.youtube.com/watch?v=CoULbcqDxtg">Aegis: Privacy-Preserving Data Analysis Framework</a></li>
         </ul>
     </section>
 
@@ -189,7 +262,8 @@
         <h2>Service</h2>
         <ul class="bullet-list">
             <li><strong>Area Chair:</strong> ACL ARR 2025</li>
-            <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025</li>
+            <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025, CCS 2023</li>
+            <li><strong>Reviewer:</strong> NeurIPS, ICML, ICLR, AISTATS, Interspeech, TMLR, etc.</li>
         </ul>
     </section>
 
