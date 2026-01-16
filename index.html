@@ -41,32 +41,32 @@
             padding: 40px 20px;
         }
 
-        /* Flexbox for the heading to put link on the right */
-        .section-header {
+        /* Container for Title + Link + Grey Line */
+        .publication-header {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 8px;
+            flex-direction: column; /* Stacks items vertically */
+            border-bottom: 1px solid #eee; /* The grey line */
+            padding-bottom: 10px;
             margin-top: var(--section-spacing);
             margin-bottom: 20px;
         }
 
-        /* Remove original h2 border/margin since the container handles it now */
         h2 { 
             font-size: 1.5rem; 
             margin: 0;
-            border: none;
-            padding: 0;
+            color: #000;
+            border: none; /* Removed original border */
         }
 
-        .header-link {
-            font-size: 0.9rem;
-            font-weight: normal;
+        .scholar-link-row {
+            font-size: 0.95rem;
+            margin-top: 4px; /* Space between Title and Link */
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
-        .header-link i {
-            margin-right: 4px;
+        .scholar-link-row i {
             color: #4285f4;
         }
 
@@ -80,7 +80,6 @@
 
         @media (max-width: 600px) {
             .hero { flex-direction: column-reverse; text-align: center; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
 
         .hero-image img {
@@ -98,14 +97,13 @@
 
         .pub-title { font-weight: 600; display: block; color: #111; }
         .authors { font-size: 0.95rem; color: var(--text-light); }
-        
+
         .social-links { 
             margin-top: 25px; 
             display: flex;
             gap: 20px;
             font-size: 1.5rem;
         }
-        
         .social-links a { color: var(--text-light); transition: color 0.2s ease; }
         .social-links a:hover { text-decoration: none; }
         .social-links a.email:hover { color: #ea4335; }
@@ -138,11 +136,12 @@
     </header>
 
     <section>
-        <div class="section-header">
+        <div class="publication-header">
             <h2>Selected Publications</h2>
-            <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="header-link">
-                <i class="ai ai-google-scholar"></i> Full Google Scholar
-            </a>
+            <div class="scholar-link-row">
+                <i class="ai ai-google-scholar"></i>
+                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en">Full Google Scholar Profile</a>
+            </div>
         </div>
 
         <ul>
@@ -158,9 +157,7 @@
     </section>
 
     <section>
-        <div class="section-header">
-            <h2>Talks</h2>
-        </div>
+        <h2 style="border-bottom: 1px solid #eee; padding-bottom: 8px; margin-top: 40px; margin-bottom: 20px;">Talks</h2>
         <ul>
             <li><strong>2024 AAAI Spring Series @ Stanford:</strong> Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
         </ul>
