@@ -68,7 +68,19 @@
             border-bottom: 1px solid #eee; 
             padding-bottom: 8px; 
             margin-top: var(--section-spacing);
+            margin-bottom: 10px; /* Reduced margin to keep the link close */
+        }
+
+        .scholar-sublink {
+            display: block;
             margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: var(--link-color);
+        }
+        
+        .scholar-sublink i {
+            margin-right: 5px;
+            color: #4285f4; /* Scholar Blue */
         }
 
         a { color: var(--link-color); text-decoration: none; }
@@ -94,25 +106,11 @@
             transition: color 0.2s ease;
         }
         
-        .social-links a:hover { 
-            color: var(--link-color); 
-            text-decoration: none; 
-        }
-        
+        .social-links a:hover { color: var(--link-color); text-decoration: none; }
         .social-links a.email:hover { color: #ea4335; }
         .social-links a.twitter:hover { color: #1da1f2; }
         .social-links a.linkedin:hover { color: #0a66c2; }
         .social-links a.scholar:hover { color: #4285f4; }
-
-        /* Style for the full scholar link at the bottom */
-        .full-scholar-footer {
-            margin-top: 15px;
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
     </style>
 </head>
 
@@ -127,18 +125,10 @@
                 I am a staff research scientist at <strong>Google DeepMind</strong>, working on Gemini post-training (Memory, Tool Use, and Audio). I received my PhD in computer science from UC Berkeley, advised by Prof. <a href="https://people.eecs.berkeley.edu/~dawnsong/">Dawn Song</a> in 2022. Previously, I earned my Bachelor's degree with honors from Peking University.
             </p>
             <div class="social-links">
-                <a href="mailto:wanglun@berkeley.edu" class="email" title="Email">
-                    <i class="fa fa-envelope-o"></i>
-                </a>
-                <a href="https://twitter.com/lunwang1996" class="twitter" title="Twitter">
-                    <i class="fa fa-twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" class="linkedin" title="LinkedIn">
-                    <i class="fa fa-linkedin"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar">
-                    <i class="ai ai-google-scholar"></i>
-                </a>
+                <a href="mailto:wanglun@berkeley.edu" class="email" title="Email"><i class="fa fa-envelope-o"></i></a>
+                <a href="https://twitter.com/lunwang1996" class="twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/lun-wang-a52951237/" class="linkedin" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
             </div>
         </div>
         <div class="hero-image">
@@ -148,58 +138,36 @@
 
     <section>
         <h2>Selected Publications</h2>
+        <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en" class="scholar-sublink">
+            <i class="ai ai-google-scholar"></i> Full Google Scholar Profile
+        </a>
+
         <ul>
             <li>
                 <a href="https://arxiv.org/pdf/2512.23988" class="pub-title">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a>
-                <span class="authors">Zhenyu Zhang, Shujian Zhang, John Lambert, Wenxuan Zhou, Zhangyang Wang, Mingqing Chen, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</span>
+                <span class="authors">Zhenyu Zhang, et al., <b>Lun Wang</b>.</span>
             </li>
-
             <li>
                 <a href="https://arxiv.org/pdf/2512.24693" class="pub-title">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a>
-                <span class="authors">Wenzhe Li, Shujian Zhang, Wenxuan Zhou, John Lambert, Chi Jin, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</span>
+                <span class="authors">Wenzhe Li, et al., <b>Lun Wang</b>.</span>
             </li>
-
             <li>
                 <a href="https://arxiv.org/abs/2507.06256" class="pub-title">Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World.</a>
                 <span class="authors">Vinu Sankar Sadasivan, Soheil Feizi, Rajiv Mathews, <b>Lun Wang</b>.</span><br>
                 <span class="venue">EACL 2026</span>
             </li>
-
-            <li>
-                <a href="https://arxiv.org/abs/2410.06572" class="pub-title">Can DeepFake Speech be Reliably Detected?</a>
-                <span class="authors">Hongbin Liu, Youzheng Chen, Arun Narayanan, Athula Balachandran, Pedro J. Moreno, <b>Lun Wang</b>.</span>
-            </li>
-
-            <li>
-                <a href="https://dlsp2024.ieee-security.org/papers/dls2024-final7.pdf" class="pub-title">Differentially Private Parameter-Efficient Fine-tuning for Large ASR Models.</a>
-                <span class="authors">Hongbin Liu, <b>Lun Wang</b>, Om Thakkar, Abhradeep Guha Thakurta, Arun Narayanan.</span><br>
-                <span class="venue">Interspeech 2025</span>
-            </li>
-
-            <li>
-                <a href="https://arxiv.org/abs/2408.16204" class="pub-title">Revisit Micro-batch Clipping: Adaptive Data Pruning via Gradient Manipulation</a>
-                <span class="authors"><b>Lun Wang</b>.</span><br>
-                <span class="venue">ICLR 2025</span>
-            </li>
-
             <li>
                 <a href="publication/oopsla19.pdf" class="pub-title">DUET: An expressive higher-order language and linear type system for statically enforcing differential privacy.</a>
-                <span class="authors">Joseph Near, et al., <b>Lun Wang</b>, et al.</span><br>
+                <span class="authors">Joseph Near, et al., <b>Lun Wang</b>.</span><br>
                 <span class="award">Distinguished Paper Award (Top 2.5% of submissions)</span>
             </li>
         </ul>
-        
-        <div class="full-scholar-footer">
-            <i class="ai ai-google-scholar" style="color: #4285f4;"></i> 
-            <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en">Full Google Scholar Profile</a>
-        </div>
     </section>
 
     <section>
         <h2>Talks</h2>
         <ul>
             <li><strong>2024 AAAI Spring Series @ Stanford:</strong> Reconcile Byzantine-robustness & Privacy in Federated Learning</li>
-            <li><strong>2021 Google FL Workshop:</strong> Federated frequency moments estimation</li>
             <li><strong>2020 IC3 Blockchain Camp:</strong> <a href="https://www.youtube.com/watch?v=CoULbcqDxtg">Aegis: Privacy-Preserving Data Analysis Framework</a></li>
         </ul>
     </section>
@@ -208,8 +176,7 @@
         <h2>Service</h2>
         <ul>
             <li><strong>Area Chair:</strong> ACL ARR 2025</li>
-            <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025, CCS 2023</li>
-            <li><strong>Reviewer:</strong> NeurIPS, ICML, ICLR, AISTATS, Interspeech, TMLR, etc.</li>
+            <li><strong>Program Committee:</strong> Usenix Security 2026, CCS 2025</li>
         </ul>
     </section>
 
