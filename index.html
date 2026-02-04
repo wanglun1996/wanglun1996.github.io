@@ -150,20 +150,37 @@
 
         /* Publication topic clusters */
         .pub-topic {
-            font-size: 1.15rem;
-            margin: 22px 0 10px 0;
-            color: #111;
+            margin: 28px 0 10px 0;
+            padding: 0;
+            border: none;
+            background: none;
         }
         
-        .pub-topic:first-of-type { margin-top: 10px; }
+        .pub-topic .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #666;
+            background: #f1f3f5;
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 6px;
+        }
+        
+        .pub-topic .title {
+            font-size: 1.25rem;
+            font-weight: 850;
+            color: #111;
+            margin: 0;
+        }
         
         .pub-topic-desc {
-            margin: -6px 0 10px 0;
+            margin: 6px 0 12px 0;
             color: #666;
             font-size: 0.92rem;
         }
-        
-        .pub-topic + .pub-list { margin-top: 8px; }
     </style>
 </head>
 
@@ -197,7 +214,12 @@
                 <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en">Full Google Scholar Profile</a>
             </div>
         </div>
+        
         <!-- Topic 1: LLM Reasoning & Reward Modeling -->
+        <div class="pub-topic">
+          <div class="badge">Topic</div>
+          <div class="title">LLM Reasoning & Reward Modeling</div>
+        </div>
         <h3 class="pub-topic">LLM Reasoning & Reward Modeling</h3>
         <!-- <p class="pub-topic-desc">Reasoning process discovery, multi-turn reward modeling, instruction contrast.</p> -->
         <ul class="pub-list">
