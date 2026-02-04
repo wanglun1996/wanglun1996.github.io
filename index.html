@@ -147,6 +147,23 @@
             color: #555;
             margin-top: 2px;
         }
+
+        /* Publication topic clusters */
+        .pub-topic {
+            font-size: 1.15rem;
+            margin: 22px 0 10px 0;
+            color: #111;
+        }
+        
+        .pub-topic:first-of-type { margin-top: 10px; }
+        
+        .pub-topic-desc {
+            margin: -6px 0 10px 0;
+            color: #666;
+            font-size: 0.92rem;
+        }
+        
+        .pub-topic + .pub-list { margin-top: 8px; }
     </style>
 </head>
 
@@ -180,8 +197,140 @@
                 <a href="https://scholar.google.com/citations?user=_TkfqdgAAAAJ&hl=en">Full Google Scholar Profile</a>
             </div>
         </div>
-
+        <!-- Topic 1: LLM Reasoning & Reward Modeling -->
+        <h3 class="pub-topic">LLM Reasoning & Reward Modeling</h3>
+        <p class="pub-topic-desc">Reasoning process discovery, multi-turn reward modeling, instruction contrast.</p>
         <ul class="pub-list">
+            <li>
+                <a href="https://arxiv.org/pdf/2512.23988">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a><br>
+                <span class="pub-authors">Zhenyu Zhang, Shujian Zhang, John Lambert, Wenxuan Zhou, Zhangyang Wang, Mingqing Chen, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/pdf/2512.24693">MUSIC: MUlti-Step Instruction Contrast for Multi-Turn Reward Models.</a><br>
+                <span class="pub-authors">Wenzhe Li, Shujian Zhang, Wenxuan Zhou, John Lambert, Chi Jin, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</span>
+            </li>
+        </ul>
+        
+        <!-- Topic 2: Audio Security, Deepfake Detection, and Audio-based LLM Attacks -->
+        <h3 class="pub-topic">Audio Security & Deepfake Detection</h3>
+        <p class="pub-topic-desc">Deepfake speech detection and real-world adversarial audio attacks on audio-based LLMs.</p>
+        <ul class="pub-list">
+            <li>
+                <a href="https://arxiv.org/abs/2410.06572">Can DeepFake Speech be Reliably Detected?</a><br>
+                <span class="pub-authors"><b>Lun Wang*</b>, Hongbin Liu*, Youzheng Chen, Arun Narayanan, Athula Balachandran, Pedro J. Moreno.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/abs/2507.06256">Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World.</a><br>
+                <span class="pub-authors">Vinu Sankar Sadasivan, Soheil Feizi, Rajiv Mathews, <b>Lun Wang</b>.</span>
+                <span class="pub-venue"><b>EACL 2026</b>: The 19th Conference of the European Chapter of the Association for Computational Linguistics.</span>
+            </li>
+        </ul>
+        
+        <!-- Topic 3: ASR Memorization, Privacy, and Training-Time Mitigations -->
+        <h3 class="pub-topic">ASR Memorization & Privacy Mitigations</h3>
+        <p class="pub-topic-desc">Memorization in large ASR models and practical mitigation strategies via clipping / pruning.</p>
+        <ul class="pub-list">
+            <li>
+                <a href="https://arxiv.org/abs/2408.16204">Revisit Micro-batch Clipping: Adaptive Data Pruning via Gradient Manipulation</a><br>
+                <span class="pub-authors"><b>Lun Wang</b>.</span>
+                <span class="pub-venue"><b>ICLR 2025</b>: The Thirteenth International Conference on Learning Representations.</span>
+            </li>
+        
+            <li>
+                <a href="http://arxiv.org/abs/2406.02004">Efficiently Train ASR Models that Memorize Less and Perform Better with Per-core Clipping.</a><br>
+                <span class="pub-authors"><b>Lun Wang</b>, Om Thakkar, Zhong Meng, Nicole Rafidi, Rohit Prabhavalkar, Arun Narayanan.</span>
+                <span class="pub-venue"><b>Interspeech 2024</b>: 25th Interspeech Conference.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/abs/2310.11739">Unintended Memorization in Large ASR Models, and How to Mitigate It.</a><br>
+                <span class="pub-authors"><b>Lun Wang</b>, Om Thakkar, Rajiv Mathews.</span>
+                <span class="pub-venue"><b>ICASSP 2024</b>: 2024 IEEE International Conference on Acoustics, Speech and Signal Processing.</span>
+            </li>
+        </ul>
+        
+        <!-- Topic 4: Differential Privacy, Private Training, and Compliance -->
+        <h3 class="pub-topic">Differential Privacy & Private Training</h3>
+        <p class="pub-topic-desc">Private learning theory/practice, DP estimation/optimization, and privacy compliance tooling.</p>
+        <ul class="pub-list">
+            <li>
+                <a href="https://arxiv.org/pdf/2302.09483.pdf">Why Is Public Pretraining Necessary for Private Model Training?</a><br>
+                <span class="pub-authors"><b>Lun Wang*</b>, Arun Ganesh*, Mahdi Haghifam*, Milad Nasr*, Sewoong Oh*, Thomas Steinke*, Om Thakkar*, Abhradeep Thakurta*.</span>
+                <span class="pub-venue"><b>ICML 2023</b>: Fortieth International Conference on Machine Learning.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/abs/2105.12363">Differentially Private Fractional Frequency Moments Estimation with Polylogarithmic Space.</a><br>
+                <span class="pub-authors"><b>Lun Wang</b>, Iosif Pinelis, Dawn Song.</span>
+                <span class="pub-venue"><b>ICLR 2022</b>: the 10th International Conference on Learning Representations.</span>
+            </li>
+        
+            <li>
+                <a href="https://www.usenix.org/system/files/sec22summer_wang-lun.pdf">PRIVGUARD: Privacy Regulation Compliance Made Easier.</a><br>
+                <span class="pub-authors"><b>Lun Wang</b>, Usmann Khan, Joseph Near, Qi Pang, Jithendaraa Subramanian, Neel Somani, Peng Gao, Andrew Low, Dawn Song.</span>
+                <span class="pub-venue"><b>Usenix Security'22</b>: the 31th Usenix Security Symposium.</span>
+            </li>
+        
+            <li>
+                <a href="publication/oopsla19.pdf">DUET: An expressive higher-order language and linear type system for statically enforcing differential privacy.</a>
+                <a href="https://github.com/uvm-plaid/duet"></a><br>
+                <span class="pub-authors">Joseph Near, David Darais, Chike Abuah, Tim Stevens, Pranav Gaddamadugu, <b>Lun Wang</b>, Neel Somani, Mu Zhang, Nikhil Sharma, Alex Shan, Dawn Song.</span>
+                <span class="pub-venue"><b>OOPSLA'19</b>: Proceedings of the ACM on Programming Languages. <font color="red">Distinguished Paper Award.</font></span>
+            </li>
+        
+            <li>
+                <a href="publication/sp19.pdf">Towards practical differentially private convex optimization.</a>
+                <a href="https://github.com/sunblaze-ucb/dpml-benchmark"></a><br>
+                <span class="pub-authors"><b>Lun Wang*</b>, Roger Iyengar*, Joseph Near*, Dawn Song*, Om Thakkar*, Abhradeep Thakurta*.</span>
+                <span class="pub-venue"><b>Oakland'19</b>: 2019 IEEE Symposium on Security and Privacy.</span>
+            </li>
+        </ul>
+        
+        <!-- Topic 5: Federated Learning, Robustness, and Secure Statistics -->
+        <h3 class="pub-topic">Federated Learning, Robustness & Secure Statistics</h3>
+        <p class="pub-topic-desc">Byzantine robustness, privacy guarantees, and secure statistical tests/estimators.</p>
+        <ul class="pub-list">
+            <li>
+                <a href="https://arxiv.org/abs/2105.14618">Secure Federated Correlation Test and Entropy Estimation.</a><br>
+                <span class="pub-authors"><b>Lun Wang*</b>, Qi Pang*, Shuai Wang, Wenting Zheng, Dawn Song.</span>
+                <span class="pub-venue"><b>ICML 2023</b>: Fortieth International Conference on Machine Learning.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/abs/2205.11765">Byzantine-Robust Federated Learning with Optimal Rates and Privacy Guarantee.</a>
+                <a href="https://github.com/wanglun1996/secure-robust-federated-learning"></a><br>
+                <span class="pub-authors"><b>Lun Wang*</b>, Banghua Zhu*, Qi Pang*, Shuai Wang, Jiantao Jiao, Dawn Song, Michael I. Jordan.</span>
+                <span class="pub-venue"><b>AISTATS 2023</b>: Artificial Intelligence and Statistics 2023.</span>
+            </li>
+        </ul>
+        
+        <!-- Topic 6: Security, Backdoors, and Causal Discovery -->
+        <h3 class="pub-topic">ML Security, Backdoors & Private Causal Discovery</h3>
+        <p class="pub-topic-desc">Trojan/backdoor analysis and privacy-preserving causal graph discovery.</p>
+        <ul class="pub-list">
+            <li>
+                <a href="https://arxiv.org/abs/2105.00579">BACKDOORL: Backdoor Attack against Competitive Reinforcement Learning.</a><br>
+                <span class="pub-authors"><b>Lun Wang</b>, Zaynah Javed, Xian Wu, Wenbo Guo, Xinyu Xing, Dawn Song.</span>
+                <span class="pub-venue"><b>IJCAI'21</b>: the 30th International Joint Conference on Artificial Intelligence.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/abs/2006.08598">Towards practical differentially private causal graph discovery.</a>
+                <a href="https://github.com/sunblaze-ucb/Priv-PC-Differentially-Private-Causal-Graph-Discovery"></a><br>
+                <span class="pub-authors"><b>Lun Wang</b>, Qi Pang, Dawn Song.</span>
+                <span class="pub-venue"><b>NeurIPS'20</b>: 34th Annual Conference on Neural Information Processing Systems.</span>
+            </li>
+        
+            <li>
+                <a href="https://arxiv.org/abs/1908.01763">Towards Inspecting and Eliminating Trojan Backdoors in Deep Neural Networks.</a><br>
+                <span class="pub-authors"><b>Lun Wang*</b>, Wenbo Guo*, Yan Xu, Xinyu Xing, Min Du, Dawn Song.</span>
+                <span class="pub-venue"><b>ICDM'20</b>: 20th IEEE International Conference on Data Mining.</span>
+            </li>
+        </ul>
+
+        <!-- <ul class="pub-list">
             <li><a href="https://arxiv.org/pdf/2512.23988">Fantastic Reasoning Behaviors and Where to Find Them: Unsupervised Discovery of the Reasoning Process.</a><br>
                 <span class="pub-authors">Zhenyu Zhang, Shujian Zhang, John Lambert, Wenxuan Zhou, Zhangyang Wang, Mingqing Chen, Andrew Hard, Rajiv Mathews, <b>Lun Wang</b>.</span>
             </li>
@@ -273,7 +422,7 @@
                 <span class="pub-authors"><b>Lun Wang*</b>, Roger Iyengar*, Joseph Near*, Dawn Song*, Om Thakkar*, Abhradeep Thakurta*.</span>
                 <span class="pub-venue"><b>Oakland'19</b>: 2019 IEEE Symposium on Security and Privacy.</span>
             </li>
-        </ul>
+        </ul> -->
     </section>
 
     <section>
