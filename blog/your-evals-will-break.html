@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Evals Will Break and You Won't See It Coming - Lun Wang</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQMRQKS1YC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VQMRQKS1YC');
+      gtag('config', 'UA-163677618-2');
+    </script>
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+
+<nav class="site-nav" aria-label="Primary navigation">
+    <a href="../index.html">Home</a>
+    <a href="./" aria-current="page">Blog</a>
+</nav>
+
+<main class="container post">
+    <a class="back-link" href="./">Back to blog</a>
+
+    <article>
+        <header>
+            <h1>Your Evals Will Break and You Won't See It Coming</h1>
+            <p class="post-meta">May 17, 2026</p>
+        </header>
+
+        <p>We've gotten pretty good at evaluating LLMs. Benchmarks for reasoning, coding, math. Safety evals for jailbreaks and toxicity. Red-teaming. Scaling laws that predict loss before training finishes. The toolkit is solid and getting better.</p>
+
+        <p>Here's what I worry about: none of this is guaranteed to work at the next scale.</p>
+
+        <p>Not because the evals are bad. They're good. The problem is that they're all designed for the kind of model we have right now. And we have no way to know whether these evaluations will still mean anything when the system undergoes a qualitative shift &mdash; when it doesn't just get better at what it already does, but becomes a fundamentally different kind of thing.</p>
+
+        <p>In physics, this is called a phase transition. I think it's the most important unsolved problem in how we understand LLMs.</p>
+
+        <h2>LLMs Are Thermodynamic (and This Matters)</h2>
+
+        <p>Here's a fact that deserves more attention: when you train LLMs with different random seeds, different data, different hyperparameters, models at the same scale converge to similar capabilities. Same abilities emerge at roughly the same compute thresholds. GPT-4-class models from different labs, trained independently, end up strikingly similar.</p>
+
+        <p>This is what thermodynamic systems look like. A gas has $10^{23}$ molecules flying around unpredictably, but the macro-level stuff &mdash; temperature, pressure, entropy &mdash; is rock solid. You can't predict any single molecule, but you can predict the aggregate with extraordinary precision.</p>
+
+        <p>LLMs are the same. Any individual output is noisy and unpredictable. But capabilities, behavioral distributions, alignment profiles &mdash; those are macroscopic quantities, and they follow lawful patterns. Scaling laws are basically equations of state: compute in, predictable behavior out, the way $PV = nRT$ connects pressure, volume, and temperature.</p>
+
+        <p>This is why our evals work. Benchmarks measure the macro state. They're reliable because the macro-level regularities are real.</p>
+
+        <p>But here's the thing about thermodynamic systems: they have a failure mode that has burned every field that forgot about it.</p>
+
+        <h2>Phase Transitions Break Everything</h2>
+
+        <p>Water doesn't gradually become steam. It jumps. At a critical point, the equation of state changes character. The variables that described liquid water become irrelevant for steam. Every measurement you carefully made on one side tells you nothing about the other side.</p>
+
+        <p>This isn't a measurement failure. The <em>system itself</em> has changed into something different. Your old instruments, calibrated for one phase, are useless in the next.</p>
+
+        <p>We've already seen this with LLMs, and we mostly didn't see it coming.</p>
+
+        <p>In-context learning didn't gradually improve from smaller models. It was absent, then present. Chain-of-thought reasoning appeared at a threshold. Tool use, instruction following, multi-step planning &mdash; these were qualitative jumps, not smooth improvements. And in every case, our evaluation methodology at the previous scale gave zero warning that the shift was coming. We were measuring variables that were irrelevant to the transition.</p>
+
+        <p>Those were capability transitions, and we got lucky &mdash; more capability was what we wanted. The question is: what other transitions are coming that we're equally blind to?</p>
+
+        <h2>We're Measuring the Current Phase</h2>
+
+        <p>Here's the problem stated precisely: to predict a phase transition, you need to know the <em>order parameter</em> &mdash; the macroscopic quantity that changes discontinuously at the critical point. For a magnet, it's magnetization. For liquid-gas, it's density. The order parameter tells you what to watch and how close you are to the boundary.</p>
+
+        <p>For LLMs, we don't have order parameters. Not for capability transitions. Not for alignment transitions. Not for anything.</p>
+
+        <p>Every benchmark we use &mdash; MMLU, HumanEval, GSM8K &mdash; measures what models can do now. They're useful within a regime and completely silent about what comes next. When a new capability emerges that no benchmark tests for, we scramble to build an evaluation after the fact. We saw this when reasoning benchmarks saturated overnight after chain-of-thought appeared. We saw it when coding benchmarks became trivial once models could use tools. We'll see it again.</p>
+
+        <p>This means our entire evaluation infrastructure is structurally reactive. We measure the system after it has changed. We never predict the change.</p>
+
+        <p>Safety evaluation has the same problem, maybe worse. Every safety team monitors refusal rates, jailbreak success rates, hallucination frequencies, toxicity scores. These all describe the safety profile of the current phase. If the system undergoes a transition &mdash; if a new capability enables failure modes that existing classifiers weren't trained to detect &mdash; these metrics become as meaningless as measuring water's viscosity to predict steam's behavior. You'd be monitoring the wrong thing and wouldn't know it.</p>
+
+        <h2>Scaling Laws Won't Save You</h2>
+
+        <p>I know the instinctive response: "but we have scaling laws, we can extrapolate."</p>
+
+        <p>No. This misunderstands what phase transitions are. The whole point is that the smooth curve <em>breaks</em>. Scaling laws are the equations of state of one phase. They're perfectly valid within that phase and they break at the boundary. Extrapolating them across a phase transition is like using the ideal gas law to predict the boiling point of water. The law works great on both sides. It tells you nothing about when or how the jump happens.</p>
+
+        <p>Our scaling laws are basically Kepler's laws &mdash; empirically accurate, descriptively powerful, not derived from anything deeper. We can plot the curves. We can't explain the exponents. And without a first-principles theory, we can't predict where the curves will break.</p>
+
+        <p>Physics solved this with deeper machinery: partition functions, renormalization group theory, universality classes. We have none of this for LLMs. We don't have the formal framework that would let us predict, from architecture and training alone, where qualitative transitions occur.</p>
+
+        <p>We don't have Boltzmann. And without Boltzmann, we can't predict when the water will boil.</p>
+
+        <h2>So What Do We Do</h2>
+
+        <p>If this is as fundamental as I think it is, the field needs to invest differently. Not by throwing away current evals &mdash; they work and they matter &mdash; but by building the infrastructure to predict when they'll stop working.</p>
+
+        <p><strong>Find the order parameters.</strong> This is the big one. What macroscopic quantities signal a qualitative transition &mdash; in capability, in alignment, in behavioral character? Mechanistic interpretability might be the best path here. Not for predicting individual outputs (that's tracking molecules), but for identifying the structural variables that sit at phase boundaries. If we knew what to measure, we'd know what to watch.</p>
+
+        <p><strong>Build scaling laws for everything, not just loss.</strong> We need empirical scaling curves for reasoning depth, tool-use sophistication, planning horizon, robustness to distribution shift, deceptive capacity &mdash; all as functions of scale. Even without theory, watching how these evolve gives us early warning. If a metric that's been smoothly improving suddenly changes slope, pay attention.</p>
+
+        <p><strong>Build evals that detect their own obsolescence.</strong> If we can't predict transitions, we can at least notice when one is happening. Monitor the meta-signals: is the distribution of benchmark scores changing character? Is the correlation structure between evaluations shifting? Is the model behaving in ways that are orthogonal to your measurement axes? These second-order signals might be the most reliable early warning we get.</p>
+
+        <p><strong>Invest in first-principles theory.</strong> Our scaling laws are curve fits. We need the theory that derives them &mdash; that explains the exponents, predicts where they break, and tells us what matters at larger scales. This is the hardest item on the list and the one that would most fundamentally change our ability to see what's coming.</p>
+
+        <h2>The Honest Picture</h2>
+
+        <p>I want to be precise. I'm not saying a dangerous phase transition is imminent. I'm saying we can't currently tell whether one is coming, and that <em>that</em> is the problem.</p>
+
+        <p>Our evaluation methodology is good. It describes the current phase well. But it's structurally post-hoc &mdash; it tells us where we are, never where we're going. And we've already been surprised multiple times by transitions we didn't predict. We just got lucky that those transitions were mostly in the direction of more capability rather than more danger.</p>
+
+        <p>The most urgent evaluation problem is not building better benchmarks for what models can do today. It's understanding, at a fundamental level, when our benchmarks will stop meaning what we think they mean.</p>
+
+        <p>We're measuring models we can't predict, using tools that have a known failure mode. The question isn't whether phase transitions will happen &mdash; they already have, repeatedly. The question is whether we'll see the next one coming. Right now, we won't.</p>
+    </article>
+</main>
+
+</body>
+</html>
