@@ -49,7 +49,7 @@
 
         <p>Not because the evals are bad. They're good. The problem is that they're all designed for the kind of model we have right now. And we have no way to know whether these evaluations will still mean anything when the system undergoes a qualitative shift &mdash; when it doesn't just get better at what it already does, but becomes a fundamentally different kind of thing.</p>
 
-        <p>In physics, this is called a phase transition. I think it's the most important unsolved problem in how we understand LLMs.</p>
+        <p>In physics, this is called a phase transition. Philip Anderson's "More Is Different" (1972) made the foundational argument that quantitative changes in a system can produce qualitative changes in behavior &mdash; that the macro-level has its own laws that can't be reduced to the micro-level. I think this is the most important unsolved problem in how we understand LLMs.</p>
 
         <h2>LLMs Are Thermodynamic (and This Matters)</h2>
 
@@ -57,7 +57,7 @@
 
         <p>This is what thermodynamic systems look like. A gas has $10^{23}$ molecules flying around unpredictably, but the macro-level stuff &mdash; temperature, pressure, entropy &mdash; is rock solid. You can't predict any single molecule, but you can predict the aggregate with extraordinary precision.</p>
 
-        <p>LLMs are the same. Any individual output is noisy and unpredictable. But capabilities, behavioral distributions, alignment profiles &mdash; those are macroscopic quantities, and they follow lawful patterns. Scaling laws are basically equations of state: compute in, predictable behavior out, the way $PV = nRT$ connects pressure, volume, and temperature.</p>
+        <p>LLMs are the same. Any individual output is noisy and unpredictable. But capabilities, behavioral distributions, alignment profiles &mdash; those are macroscopic quantities, and they follow lawful patterns. Scaling laws (Kaplan et al., 2020; Hoffmann et al., 2022) are basically equations of state: compute in, predictable behavior out, the way $PV = nRT$ connects pressure, volume, and temperature.</p>
 
         <p>This is why our evals work. Benchmarks measure the macro state. They're reliable because the macro-level regularities are real.</p>
 
@@ -71,7 +71,9 @@
 
         <p>We may have already seen hints of this with LLMs, though the evidence is more contested than it first appears.</p>
 
-        <p>In-context learning, chain-of-thought reasoning, tool use &mdash; these capabilities seemed to appear suddenly at certain scales, looking like textbook phase transitions. But there's an important counterpoint: Schaeffer et al. (2023) showed that many of these apparent "jumps" are artifacts of discontinuous metrics like exact-match accuracy. Switch to a continuous metric and the capability often scales smoothly, with no transition in sight.</p>
+        <p>Wei et al. (2022) documented what they called "emergent abilities" &mdash; in-context learning, chain-of-thought reasoning, tool use &mdash; capabilities that seemed to appear suddenly at certain scales, looking like textbook phase transitions. (The analogy to physics was explicit: they called it a "phase transition" in the paper.) And this pattern isn't unique to LLMs. Grokking (Power et al., 2022) &mdash; where a network suddenly generalizes long after memorizing its training data &mdash; has been formally characterized as a phase transition (Liu et al., 2022). Double descent (Nakkiran et al., 2021) shows non-monotonic behavior that defies the smooth curves we'd expect from classical learning theory.</p>
+
+        <p>But there's an important counterpoint: Schaeffer et al. (2023) showed that many of these apparent "jumps" in LLM capabilities are artifacts of discontinuous metrics like exact-match accuracy. Switch to a continuous metric and the capability often scales smoothly, with no transition in sight.</p>
 
         <p>This is a genuinely important finding, but I don't think it settles the question &mdash; and in a way, it makes my point sharper. If we can't even tell whether a past transition was a real qualitative shift or a metric artifact, what does that say about our ability to detect the next one? We're not just blind to future transitions. We can't even reliably characterize the ones that already happened. Our instruments are so poorly calibrated for this question that we're still debating whether the data shows a phase transition or a smooth curve.</p>
 
@@ -89,11 +91,25 @@
 
         <p>Safety evaluation has the same problem, maybe worse. Every safety team monitors refusal rates, jailbreak success rates, hallucination frequencies, toxicity scores. These all describe the safety profile of the current phase. If the system undergoes a transition &mdash; if a new capability enables failure modes that existing classifiers weren't trained to detect &mdash; these metrics become as meaningless as measuring water's viscosity to predict steam's behavior. You'd be monitoring the wrong thing and wouldn't know it.</p>
 
+        <h2>Scaling Laws Won't Save You</h2>
+
+        <p>I know the instinctive response: "but we have scaling laws; we can extrapolate."</p>
+
+        <p>No. This misunderstands what phase transitions are. The whole point is that the smooth curve <em>breaks</em>. Scaling laws are the equations of state of one phase. They hold within that phase and they break at the boundary. The ideal gas law beautifully describes steam; it tells you absolutely nothing about the liquid water on the other side of the transition, because the law simply doesn't apply there. Each phase has its own equation of state, and the transition between them is exactly where both equations fail.</p>
+
+        <p>Our scaling laws are basically Kepler's laws &mdash; empirically accurate, descriptively powerful, not derived from anything deeper. We can plot the curves. We can't explain the exponents. And without a first-principles theory, we can't predict where the curves will break.</p>
+
+        <p>Physics solved this with deeper machinery: partition functions, renormalization group theory, universality classes. And here's the thing &mdash; this approach isn't just a metaphor. It's already being applied to neural networks, and it works. Roberts, Yaida, and Hanin (2022) laid out a systematic framework &mdash; <em>The Principles of Deep Learning Theory</em> &mdash; that uses effective field theory to derive properties of deep networks from first principles. Shan, Li, and Sompolinsky (PNAS, 2026) used a Gibbs formulation from statistical mechanics to derive order parameters for deep networks in a continual learning setting. Their order parameters &mdash; measuring feature similarity and rule similarity between tasks &mdash; predict when catastrophic forgetting occurs, and they identify genuine phase transitions where learning ability changes abruptly.</p>
+
+        <p>This is a proof of concept that the program I'm describing is viable. You <em>can</em> use statistical mechanics to derive order parameters for neural networks. You <em>can</em> predict phase transitions from theory rather than stumbling into them empirically.</p>
+
+        <p>But their work is for continual learning in wide networks with a teacher-student setup. Nobody has done the equivalent for the questions that matter most at scale: when do new capabilities emerge in LLMs? When do alignment properties change qualitatively? Where are the phase boundaries for the systems we're actually deploying? The path exists. We just haven't walked it where we need to go.</p>
+
         <h2>So What Do We Do</h2>
 
         <p>If this is as fundamental as I think it is, the field needs to invest differently. Not by throwing away current evals &mdash; they work and they matter &mdash; but by building the infrastructure to predict when they'll stop working.</p>
 
-        <p><strong>Find the order parameters.</strong> This is the big one. What macroscopic quantities signal a qualitative transition &mdash; in capability, in alignment, in behavioral character? Mechanistic interpretability might be the best path here. Not for predicting individual outputs (that's tracking molecules), but for identifying the structural variables that sit at phase boundaries. If we knew what to measure, we'd know what to watch.</p>
+        <p><strong>Find the order parameters.</strong> This is the big one. What macroscopic quantities signal a qualitative transition &mdash; in capability, in alignment, in behavioral character? The Shan et al. work shows this is doable &mdash; they found order parameters that predict phase transitions in continual learning. Nanda et al. (2023) took a complementary approach, using mechanistic interpretability to find "progress measures" that predict grokking before it happens &mdash; internal structural changes that precede the visible performance jump. The challenge is extending these approaches from stylized settings to LLMs at scale, where the relevant transitions are about capability emergence and alignment shifts. Mechanistic interpretability might bridge that gap &mdash; not for predicting individual outputs (that's tracking molecules), but for identifying the structural variables that sit at phase boundaries. If we knew what to measure, we'd know what to watch.</p>
 
         <p><strong>Build scaling laws for everything, not just loss.</strong> We need empirical scaling curves for reasoning depth, tool-use sophistication, planning horizon, robustness to distribution shift, deceptive capacity &mdash; all as functions of scale. Even without theory, watching how these evolve gives us early warning. If a metric that's been smoothly improving suddenly changes slope, pay attention.</p>
 
