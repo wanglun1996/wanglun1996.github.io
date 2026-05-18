@@ -89,18 +89,6 @@
 
         <p>Safety evaluation has the same problem, maybe worse. Every safety team monitors refusal rates, jailbreak success rates, hallucination frequencies, toxicity scores. These all describe the safety profile of the current phase. If the system undergoes a transition &mdash; if a new capability enables failure modes that existing classifiers weren't trained to detect &mdash; these metrics become as meaningless as measuring water's viscosity to predict steam's behavior. You'd be monitoring the wrong thing and wouldn't know it.</p>
 
-        <h2>Scaling Laws Won't Save You</h2>
-
-        <p>I know the instinctive response: "but we have scaling laws; we can extrapolate."</p>
-
-        <p>No. This misunderstands what phase transitions are. The whole point is that the smooth curve <em>breaks</em>. Scaling laws are the equations of state of one phase. They hold within that phase and they break at the boundary. The ideal gas law beautifully describes steam; it tells you absolutely nothing about the liquid water on the other side of the transition, because the law simply doesn't apply there. Each phase has its own equation of state, and the transition between them is exactly where both equations fail.</p>
-
-        <p>Our scaling laws are basically Kepler's laws &mdash; empirically accurate, descriptively powerful, not derived from anything deeper. We can plot the curves. We can't explain the exponents. And without a first-principles theory, we can't predict where the curves will break.</p>
-
-        <p>Physics solved this with deeper machinery: partition functions, renormalization group theory, universality classes. We have none of this for LLMs. We don't have the formal framework that would let us predict, from architecture and training alone, where qualitative transitions occur.</p>
-
-        <p>We don't have Boltzmann. And without Boltzmann, we can't predict when the water will boil.</p>
-
         <h2>So What Do We Do</h2>
 
         <p>If this is as fundamental as I think it is, the field needs to invest differently. Not by throwing away current evals &mdash; they work and they matter &mdash; but by building the infrastructure to predict when they'll stop working.</p>
