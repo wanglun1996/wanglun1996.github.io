@@ -43,89 +43,71 @@
             <p class="post-meta">May 17, 2026</p>
         </header>
 
-        <p>We've gotten pretty good at evaluating LLMs. Benchmarks for reasoning, coding, math. Safety evals for jailbreaks and toxicity. Red-teaming. Scaling laws that predict loss before training finishes. The toolkit is solid and getting better.</p>
+        <p>We're good at evaluating the models we have. We're much worse at evaluating the models we're about to build &mdash; especially if they cross into a new capability regime.</p>
 
-        <p>Here's what I worry about: none of this is guaranteed to work at the next scale.</p>
+        <p>Most benchmarks, safety evals, and red-teaming protocols implicitly assume the next model is a stronger version of the current one. If it's a different kind of thing, our entire evaluation infrastructure breaks silently.</p>
 
-        <p>Not because the evals are bad. They're good. The problem is that they're all designed for the kind of model we have right now. And we have no way to know whether these evaluations will still mean anything when the system undergoes a qualitative shift &mdash; when it doesn't just get better at what it already does, but becomes a fundamentally different kind of thing.</p>
+        <p>I think this is the most important unsolved problem in how we understand LLMs. And I think the answer is that eval &mdash; not training, not architecture, not data &mdash; is the bottleneck for the next capability jump. Let me explain why.</p>
 
-        <p>In physics, this is called a phase transition. Philip Anderson's "More Is Different" (1972) made the foundational argument that quantitative changes in a system can produce qualitative changes in behavior &mdash; that the macro-level has its own laws that can't be reduced to the micro-level. I think this is the most important unsolved problem in how we understand LLMs.</p>
+        <h2>The Failure Mode: Qualitative Shifts</h2>
 
-        <h2>LLMs Are Thermodynamic (and This Matters)</h2>
+        <p>Wei et al. (2022) documented what they called "emergent abilities" &mdash; few-shot prompted task performance, chain-of-thought reasoning gains, instruction following &mdash; capabilities that appeared only at larger scales. Grokking (Power et al., 2022) shows a related but distinct phenomenon: networks that suddenly generalize long after memorizing their training data, a dynamic transition over training time rather than across scale (Liu et al., 2022). Different phenomena, but the same implication for evaluation: standard metrics failed to anticipate the qualitative change.</p>
 
-        <p>Here's a fact that deserves more attention: when you train LLMs with different random seeds, different data, different hyperparameters, models at the same scale converge to similar capabilities. Same abilities emerge at roughly the same compute thresholds. GPT-4-class models from different labs, trained independently, end up strikingly similar.</p>
+        <p>There's an important counterpoint: Schaeffer et al. (2023) showed that many apparent "jumps" in LLM capabilities are artifacts of discontinuous metrics like exact-match accuracy. Switch to a continuous metric and the capability often scales smoothly.</p>
 
-        <p>This is what thermodynamic systems look like. A gas has $10^{23}$ molecules flying around unpredictably, but the macro-level stuff &mdash; temperature, pressure, entropy &mdash; is rock solid. You can't predict any single molecule, but you can predict the aggregate with extraordinary precision.</p>
+        <p>I don't think this settles the question &mdash; in a way, it makes my point sharper. If we can't even tell whether a past transition was a real qualitative shift or a metric artifact, what does that say about our ability to detect the next one? Either way, the evaluation infrastructure can surprise us &mdash; whether because the system changed or because our metrics were misleading all along.</p>
 
-        <p>LLMs are the same. Any individual output is noisy and unpredictable. But capabilities, behavioral distributions, alignment profiles &mdash; those are macroscopic quantities, and they follow lawful patterns. Scaling laws (Kaplan et al., 2020; Hoffmann et al., 2022) are basically equations of state: compute in, predictable behavior out, the way $PV = nRT$ connects pressure, volume, and temperature.</p>
+        <h2>We Don't Know What to Measure</h2>
 
-        <p>This is why our evals work. Benchmarks measure the macro state. They're reliable because the macro-level regularities are real.</p>
+        <p>In physics, understanding a phase transition often means identifying an <em>order parameter</em> &mdash; a macroscopic quantity that distinguishes regimes and changes its value or scaling behavior near the critical point. Without it, you can't tell how close you are to a boundary, or even that one exists.</p>
 
-        <p>But here's the thing about thermodynamic systems: they have a failure mode that has burned every field that forgot about it.</p>
+        <p>For LLMs at deployment scale, we don't yet have order parameters &mdash; not for capability transitions. Progress has been made in stylized settings (more below), but for the systems we're actually shipping, we're flying blind.</p>
 
-        <h2>Phase Transitions Break Everything</h2>
+        <p>Every benchmark we use &mdash; GPQA, SWE-bench, ARC-AGI, Humanity's Last Exam &mdash; measures what models can do now. They're useful within a regime, but weak evidence about what happens after a regime change. When a new capability emerges that no benchmark tests for, we scramble to build an evaluation after the fact. We saw a version of this with chain-of-thought: once the elicitation method became standard, some older reasoning benchmarks became much less diagnostic, and the field had to move toward harder evaluations. We'll see it again.</p>
 
-        <p>Water doesn't gradually become steam. It jumps. At a critical point, the equation of state changes character. The fundamental variables &mdash; temperature, pressure, volume &mdash; remain the same, but the <em>relationships between them</em> transform discontinuously. The liquid's equation of state simply does not apply to the gas. Every regularity you carefully documented in one phase can mislead you about the other.</p>
+        <p>To make this concrete: imagine a model that, at some scale, develops the ability to strategically withhold information to achieve goals &mdash; not lying exactly, but selectively omitting facts in ways that steer conversations toward outcomes its training process accidentally reinforced. Your existing honesty benchmarks wouldn't catch this, because they test for factual accuracy, not for strategic omission. Your safety classifiers wouldn't flag it, because the individual outputs are all technically true. The capability is new, the failure mode is new, and nothing in your evaluation suite was designed to look for it. You'd be monitoring the wrong thing and wouldn't know it.</p>
 
-        <p>This isn't a measurement failure. The quantities you're measuring are still well-defined. But the patterns you learned from them &mdash; the correlations, the trends, the rules of thumb &mdash; no longer hold.</p>
+        <p>This is the core problem: our entire evaluation infrastructure is structurally reactive. We measure the system after it has changed. We never predict the change.</p>
 
-        <p>We may have already seen hints of this with LLMs, though the evidence is more contested than it first appears.</p>
+        <h2>Eval Is Upstream of Everything</h2>
 
-        <p>Wei et al. (2022) documented what they called "emergent abilities" &mdash; in-context learning, chain-of-thought reasoning, tool use &mdash; capabilities that seemed to appear suddenly at certain scales, looking like textbook phase transitions. (The analogy to physics was explicit: they called it a "phase transition" in the paper.) And this pattern isn't unique to LLMs. Grokking (Power et al., 2022) &mdash; where a network suddenly generalizes long after memorizing its training data &mdash; has been formally characterized as a phase transition (Liu et al., 2022). Double descent (Nakkiran et al., 2021) shows non-monotonic behavior that defies the smooth curves we'd expect from classical learning theory.</p>
+        <p>This matters more than it might sound, because of a simple fact: <strong>if you can evaluate correctly, you can train correctly.</strong></p>
 
-        <p>But there's an important counterpoint: Schaeffer et al. (2023) showed that many of these apparent "jumps" in LLM capabilities are artifacts of discontinuous metrics like exact-match accuracy. Switch to a continuous metric and the capability often scales smoothly, with no transition in sight.</p>
+        <p>Training is optimization, and optimization is only as good as its objective. The objective comes from eval. If you know what to measure &mdash; if you can predict how those measurements change at scale &mdash; then you can design the right training objectives, build the right safety layers, make informed scaling decisions, do RLHF that targets the right behavioral properties instead of proxies that Goodhart at the next phase boundary.</p>
 
-        <p>This is a genuinely important finding, but I don't think it settles the question &mdash; and in a way, it makes my point sharper. If we can't even tell whether a past transition was a real qualitative shift or a metric artifact, what does that say about our ability to detect the next one? We're not just blind to future transitions. We can't even reliably characterize the ones that already happened. Our instruments are so poorly calibrated for this question that we're still debating whether the data shows a phase transition or a smooth curve.</p>
+        <p>The inverse is also true: if your evals are calibrated for the wrong regime, everything downstream is wrong. Training signal, safety metrics, scaling decisions &mdash; all wrong, and you won't know it until it's too late.</p>
 
-        <p>Either way &mdash; whether capabilities emerge smoothly or in jumps &mdash; the evaluation problem remains. If capabilities scale smoothly but our benchmarks use discontinuous metrics, then our evals are giving us a misleading picture of the system. And if genuine phase transitions do occur, we have no way to predict them. Both scenarios end in the same place: our evaluation infrastructure can surprise us.</p>
-
-        <h2>We're Measuring the Current Phase</h2>
-
-        <p>Here's the problem stated precisely: to predict a phase transition, you need to know the <em>order parameter</em> &mdash; the macroscopic quantity that changes discontinuously at the critical point. For a magnet, it's magnetization. For liquid-gas, it's density. The order parameter tells you what to watch and how close you are to the boundary.</p>
-
-        <p>For LLMs, we don't have order parameters. Not for capability transitions. Not for alignment transitions. Not for anything.</p>
-
-        <p>Every benchmark we use &mdash; MMLU, HumanEval, GSM8K &mdash; measures what models can do now. They're useful within a regime and completely silent about what comes next. When a new capability emerges that no benchmark tests for, we scramble to build an evaluation after the fact. We saw this when reasoning benchmarks saturated overnight after chain-of-thought appeared. We saw it when coding benchmarks became trivial once models could use tools. We'll see it again.</p>
-
-        <p>This means our entire evaluation infrastructure is structurally reactive. We measure the system after it has changed. We never predict the change.</p>
-
-        <p>Safety evaluation has the same problem, maybe worse. Every safety team monitors refusal rates, jailbreak success rates, hallucination frequencies, toxicity scores. These all describe the safety profile of the current phase. If the system undergoes a transition &mdash; if a new capability enables failure modes that existing classifiers weren't trained to detect &mdash; these metrics become as meaningless as measuring water's viscosity to predict steam's behavior. You'd be monitoring the wrong thing and wouldn't know it.</p>
-
-        <h2>Scaling Laws Won't Save You</h2>
-
-        <p>I know the instinctive response: "but we have scaling laws; we can extrapolate."</p>
-
-        <p>No. This misunderstands what phase transitions are. The whole point is that the smooth curve <em>breaks</em>. Scaling laws are the equations of state of one phase. They hold within that phase and they break at the boundary. The ideal gas law beautifully describes steam; it tells you absolutely nothing about the liquid water on the other side of the transition, because the law simply doesn't apply there. Each phase has its own equation of state, and the transition between them is exactly where both equations fail.</p>
-
-        <p>Our scaling laws are basically Kepler's laws &mdash; empirically accurate, descriptively powerful, not derived from anything deeper. We can plot the curves. We can't explain the exponents. And without a first-principles theory, we can't predict where the curves will break.</p>
-
-        <p>Physics solved this with deeper machinery: partition functions, renormalization group theory, universality classes. And here's the thing &mdash; this approach isn't just a metaphor. It's already being applied to neural networks, and it works. Roberts, Yaida, and Hanin (2022) laid out a systematic framework &mdash; <em>The Principles of Deep Learning Theory</em> &mdash; that uses effective field theory to derive properties of deep networks from first principles. Shan, Li, and Sompolinsky (PNAS, 2026) used a Gibbs formulation from statistical mechanics to derive order parameters for deep networks in a continual learning setting. Their order parameters &mdash; measuring feature similarity and rule similarity between tasks &mdash; predict when catastrophic forgetting occurs, and they identify genuine phase transitions where learning ability changes abruptly.</p>
-
-        <p>This is a proof of concept that the program I'm describing is viable. You <em>can</em> use statistical mechanics to derive order parameters for neural networks. You <em>can</em> predict phase transitions from theory rather than stumbling into them empirically.</p>
-
-        <p>But their work is for continual learning in wide networks with a teacher-student setup. Nobody has done the equivalent for the questions that matter most at scale: when do new capabilities emerge in LLMs? When do alignment properties change qualitatively? Where are the phase boundaries for the systems we're actually deploying? The path exists. We just haven't walked it where we need to go.</p>
+        <p>This is why I believe eval is the bottleneck for the next capability jump. The labs that figure out how to evaluate ahead of the curve will be the ones that scale safely. The ones that don't will be the ones that get surprised.</p>
 
         <h2>So What Do We Do</h2>
 
-        <p>If this is as fundamental as I think it is, the field needs to invest differently. Not by throwing away current evals &mdash; they work and they matter &mdash; but by building the infrastructure to predict when they'll stop working.</p>
+        <p>The field needs to invest differently. Not by throwing away current evals &mdash; they work &mdash; but by building the infrastructure to predict when they'll stop working.</p>
 
-        <p><strong>Find the order parameters.</strong> This is the big one. What macroscopic quantities signal a qualitative transition &mdash; in capability, in alignment, in behavioral character? The Shan et al. work shows this is doable &mdash; they found order parameters that predict phase transitions in continual learning. Nanda et al. (2023) took a complementary approach, using mechanistic interpretability to find "progress measures" that predict grokking before it happens &mdash; internal structural changes that precede the visible performance jump. The challenge is extending these approaches from stylized settings to LLMs at scale, where the relevant transitions are about capability emergence and alignment shifts. Mechanistic interpretability might bridge that gap &mdash; not for predicting individual outputs (that's tracking molecules), but for identifying the structural variables that sit at phase boundaries. If we knew what to measure, we'd know what to watch.</p>
+        <p><strong>Find the order parameters.</strong> What quantities signal a qualitative transition &mdash; in capability, in alignment, in behavioral character? This isn't just a theoretical wish. Shan, Li, and Sompolinsky (PNAS, 2026) used statistical mechanics to derive order parameters for deep networks in a continual learning setting, and those order parameters actually predict phase transitions in learning ability. Nanda et al. (2023) used mechanistic interpretability to find "progress measures" that predict grokking before it happens &mdash; internal structural changes that precede the visible performance jump. The challenge is extending these from stylized settings to LLMs at scale. If we knew what to measure, we'd know what to watch.</p>
 
-        <p><strong>Build scaling laws for everything, not just loss.</strong> We need empirical scaling curves for reasoning depth, tool-use sophistication, planning horizon, robustness to distribution shift, deceptive capacity &mdash; all as functions of scale. Even without theory, watching how these evolve gives us early warning. If a metric that's been smoothly improving suddenly changes slope, pay attention.</p>
+        <p><strong>Build evals that detect their own obsolescence &mdash; and evolve.</strong> This is becoming more urgent as models become more agentic. Systems that can write code, run experiments, generate data, and assist with training or evaluation pipelines make static evals increasingly brittle. If model capabilities improve faster than human eval teams can update benchmarks, evaluation has to become adaptive.</p>
 
-        <p><strong>Build evals that detect their own obsolescence.</strong> If we can't predict transitions, we can at least notice when one is happening. Monitor the meta-signals: is the distribution of benchmark scores changing character? Is the correlation structure between evaluations shifting? Is the model behaving in ways that are orthogonal to your measurement axes? These second-order signals might be the most reliable early warning we get.</p>
+        <p>Concretely: monitor the meta-signals &mdash; is the distribution of benchmark scores changing character? Is the correlation structure between evaluations shifting? Is the model developing capabilities orthogonal to your measurement axes? Track scaling curves for everything &mdash; not just loss, but reasoning depth, tool-use sophistication, deceptive capacity &mdash; and pay attention when a smooth trend breaks. More ambitiously, build self-evolving evals: evaluation systems that use models to probe other models, automatically generating new test cases as capabilities change, discovering failure modes the original eval designers never anticipated. The eval suite should be a living system that co-evolves with the models it measures, not a static checklist written for last year's frontier.</p>
 
-        <p><strong>Invest in first-principles theory.</strong> Our scaling laws are curve fits. We need the theory that derives them &mdash; that explains the exponents, predicts where they break, and tells us what matters at larger scales. This is the hardest item on the list and the one that would most fundamentally change our ability to see what's coming.</p>
+        <hr>
 
-        <h2>The Honest Picture</h2>
+        <p>The question isn't whether our evaluations will be surprised &mdash; they already have been, repeatedly, whether by genuine phase transitions or by our own metric choices misleading us. The question is whether we'll see the next surprise coming. Right now, we won't.</p>
 
-        <p>I want to be precise. I'm not saying a dangerous phase transition is imminent. I'm saying we can't currently tell whether one is coming, and that <em>that</em> is the problem.</p>
+        <hr>
 
-        <p>Our evaluation methodology is good. It describes the current phase well. But it's structurally post-hoc &mdash; it tells us where we are, never where we're going. And we've already been surprised multiple times by capabilities we didn't anticipate &mdash; whether those were genuine phase transitions or smooth curves that our metrics made look like jumps, the surprise itself is the indictment.</p>
+        <h2>References</h2>
 
-        <p>The most urgent evaluation problem is not building better benchmarks for what models can do today. It's understanding, at a fundamental level, when our benchmarks will stop meaning what we think they mean.</p>
+        <p>Liu, Z., Kitouni, O., Nolte, N., Michaud, E. J., Tegmark, M., &amp; Williams, M. (2022). Towards Understanding Grokking: An Effective Theory of Representation Learning. <em>NeurIPS 2022</em>. arXiv:2205.10343.</p>
 
-        <p>We're measuring models we can't predict, using tools that have a known failure mode. The question isn't whether our evaluations will be surprised &mdash; they already have been, repeatedly, whether by genuine phase transitions or by our own metric choices misleading us. The question is whether we'll see the next surprise coming. Right now, we won't.</p>
+        <p>Nanda, N., Chan, L., Lieberum, T., Smith, J., &amp; Steinhardt, J. (2023). Progress Measures for Grokking via Mechanistic Interpretability. <em>ICLR 2023</em>. arXiv:2301.05217.</p>
+
+        <p>Power, A., Burda, Y., Edwards, H., Babuschkin, I., &amp; Misra, V. (2022). Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets. <em>ICLR 2022 Workshop</em>. arXiv:2201.02177.</p>
+
+        <p>Schaeffer, R., Miranda, B., &amp; Koyejo, S. (2023). Are Emergent Abilities of Large Language Models a Mirage? <em>NeurIPS 2023</em>. arXiv:2304.15004.</p>
+
+        <p>Shan, H., Li, Q., &amp; Sompolinsky, H. (2026). Order Parameters and Phase Transitions of Continual Learning in Deep Neural Networks. <em>PNAS</em>, 2026. arXiv:2407.10315.</p>
+
+        <p>Wei, J., Tay, Y., Bommasani, R., et al. (2022). Emergent Abilities of Large Language Models. <em>TMLR</em>. arXiv:2206.07682.</p>
     </article>
 </main>
 
