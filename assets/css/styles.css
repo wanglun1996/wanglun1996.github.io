@@ -31,23 +31,12 @@ a {
 .site-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: flex-end;
     max-width: 900px;
     margin: 0 auto;
     padding: 22px 20px 14px;
     border-bottom: 1px solid var(--border);
     font-size: 0.95rem;
-}
-
-.site-brand {
-    color: #222;
-    font-size: 0.98rem;
-    font-weight: 700;
-}
-
-.site-brand:hover {
-    color: var(--link-color);
 }
 
 .nav-links {
@@ -410,8 +399,7 @@ h2 {
 
 @media (max-width: 768px) {
     .site-nav {
-        align-items: center;
-        gap: 16px;
+        justify-content: flex-start;
     }
 
     .hero {
