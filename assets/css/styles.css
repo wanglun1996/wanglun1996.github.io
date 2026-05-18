@@ -32,57 +32,56 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 20px;
     max-width: 900px;
     margin: 0 auto;
-    padding: 18px 20px 0;
+    padding: 22px 20px 14px;
+    border-bottom: 1px solid var(--border);
     font-size: 0.95rem;
 }
 
 .site-brand {
-    color: #111;
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 0.01em;
+    color: #222;
+    font-size: 0.98rem;
+    font-weight: 700;
 }
 
 .site-brand:hover {
-    color: #111;
+    color: var(--link-color);
 }
 
 .nav-links {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px;
-    border: 1px solid #e8edf3;
-    border-radius: 999px;
-    background: rgba(248, 250, 252, 0.82);
+    gap: 22px;
 }
 
 .nav-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 30px;
-    padding: 0 13px;
-    border-radius: 999px;
-    color: #505866;
-    font-size: 0.9rem;
-    font-weight: 700;
-    line-height: 1;
-    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    color: #555;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 2px 0;
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: #111;
-    background: #eef4fb;
+    color: var(--link-color);
 }
 
 .nav-links a[aria-current="page"] {
     color: #111;
-    background: #fff;
-    box-shadow: 0 1px 5px rgba(20, 36, 58, 0.12);
+}
+
+.nav-links a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15px;
+    height: 2px;
+    background: var(--link-color);
 }
 
 .hero {
@@ -411,9 +410,8 @@ h2 {
 
 @media (max-width: 768px) {
     .site-nav {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
+        align-items: center;
+        gap: 16px;
     }
 
     .hero {
