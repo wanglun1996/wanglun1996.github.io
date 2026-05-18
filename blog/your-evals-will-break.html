@@ -66,15 +66,17 @@
 
         <h2>Phase Transitions Break Everything</h2>
 
-        <p>Water doesn't gradually become steam. It jumps. At a critical point, the equation of state changes character. The variables that described liquid water become irrelevant for steam. Every measurement you carefully made on one side tells you nothing about the other side.</p>
+        <p>Water doesn't gradually become steam. It jumps. At a critical point, the equation of state changes character. The fundamental variables &mdash; temperature, pressure, volume &mdash; remain the same, but the <em>relationships between them</em> transform discontinuously. The liquid's equation of state simply does not apply to the gas. Every regularity you carefully documented in one phase can mislead you about the other.</p>
 
-        <p>This isn't a measurement failure. The <em>system itself</em> has changed into something different. Your old instruments, calibrated for one phase, are useless in the next.</p>
+        <p>This isn't a measurement failure. The quantities you're measuring are still well-defined. But the patterns you learned from them &mdash; the correlations, the trends, the rules of thumb &mdash; no longer hold.</p>
 
-        <p>We've already seen this with LLMs, and we mostly didn't see it coming.</p>
+        <p>We may have already seen hints of this with LLMs, though the evidence is more contested than it first appears.</p>
 
-        <p>In-context learning didn't gradually improve from smaller models. It was absent, then present. Chain-of-thought reasoning appeared at a threshold. Tool use, instruction following, multi-step planning &mdash; these were qualitative jumps, not smooth improvements. And in every case, our evaluation methodology at the previous scale gave zero warning that the shift was coming. We were measuring variables that were irrelevant to the transition.</p>
+        <p>In-context learning, chain-of-thought reasoning, tool use &mdash; these capabilities seemed to appear suddenly at certain scales, looking like textbook phase transitions. But there's an important counterpoint: Schaeffer et al. (2023) showed that many of these apparent "jumps" are artifacts of discontinuous metrics like exact-match accuracy. Switch to a continuous metric and the capability often scales smoothly, with no transition in sight.</p>
 
-        <p>Those were capability transitions, and we got lucky &mdash; more capability was what we wanted. The question is: what other transitions are coming that we're equally blind to?</p>
+        <p>This is a genuinely important finding, but I don't think it settles the question &mdash; and in a way, it makes my point sharper. If we can't even tell whether a past transition was a real qualitative shift or a metric artifact, what does that say about our ability to detect the next one? We're not just blind to future transitions. We can't even reliably characterize the ones that already happened. Our instruments are so poorly calibrated for this question that we're still debating whether the data shows a phase transition or a smooth curve.</p>
+
+        <p>Either way &mdash; whether capabilities emerge smoothly or in jumps &mdash; the evaluation problem remains. If capabilities scale smoothly but our benchmarks use discontinuous metrics, then our evals are giving us a misleading picture of the system. And if genuine phase transitions do occur, we have no way to predict them. Both scenarios end in the same place: our evaluation infrastructure can surprise us.</p>
 
         <h2>We're Measuring the Current Phase</h2>
 
@@ -90,9 +92,9 @@
 
         <h2>Scaling Laws Won't Save You</h2>
 
-        <p>I know the instinctive response: "but we have scaling laws, we can extrapolate."</p>
+        <p>I know the instinctive response: "but we have scaling laws; we can extrapolate."</p>
 
-        <p>No. This misunderstands what phase transitions are. The whole point is that the smooth curve <em>breaks</em>. Scaling laws are the equations of state of one phase. They're perfectly valid within that phase and they break at the boundary. Extrapolating them across a phase transition is like using the ideal gas law to predict the boiling point of water. The law works great on both sides. It tells you nothing about when or how the jump happens.</p>
+        <p>No. This misunderstands what phase transitions are. The whole point is that the smooth curve <em>breaks</em>. Scaling laws are the equations of state of one phase. They hold within that phase and they break at the boundary. The ideal gas law beautifully describes steam; it tells you absolutely nothing about the liquid water on the other side of the transition, because the law simply doesn't apply there. Each phase has its own equation of state, and the transition between them is exactly where both equations fail.</p>
 
         <p>Our scaling laws are basically Kepler's laws &mdash; empirically accurate, descriptively powerful, not derived from anything deeper. We can plot the curves. We can't explain the exponents. And without a first-principles theory, we can't predict where the curves will break.</p>
 
@@ -116,11 +118,11 @@
 
         <p>I want to be precise. I'm not saying a dangerous phase transition is imminent. I'm saying we can't currently tell whether one is coming, and that <em>that</em> is the problem.</p>
 
-        <p>Our evaluation methodology is good. It describes the current phase well. But it's structurally post-hoc &mdash; it tells us where we are, never where we're going. And we've already been surprised multiple times by transitions we didn't predict. We just got lucky that those transitions were mostly in the direction of more capability rather than more danger.</p>
+        <p>Our evaluation methodology is good. It describes the current phase well. But it's structurally post-hoc &mdash; it tells us where we are, never where we're going. And we've already been surprised multiple times by capabilities we didn't anticipate &mdash; whether those were genuine phase transitions or smooth curves that our metrics made look like jumps, the surprise itself is the indictment.</p>
 
         <p>The most urgent evaluation problem is not building better benchmarks for what models can do today. It's understanding, at a fundamental level, when our benchmarks will stop meaning what we think they mean.</p>
 
-        <p>We're measuring models we can't predict, using tools that have a known failure mode. The question isn't whether phase transitions will happen &mdash; they already have, repeatedly. The question is whether we'll see the next one coming. Right now, we won't.</p>
+        <p>We're measuring models we can't predict, using tools that have a known failure mode. The question isn't whether our evaluations will be surprised &mdash; they already have been, repeatedly, whether by genuine phase transitions or by our own metric choices misleading us. The question is whether we'll see the next surprise coming. Right now, we won't.</p>
     </article>
 </main>
 
