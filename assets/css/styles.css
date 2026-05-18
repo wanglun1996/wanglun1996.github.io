@@ -30,22 +30,59 @@ a {
 
 .site-nav {
     display: flex;
-    justify-content: flex-end;
-    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
     max-width: 900px;
     margin: 0 auto;
-    padding: 24px 20px 0;
+    padding: 18px 20px 0;
     font-size: 0.95rem;
 }
 
-.site-nav a {
-    color: #444;
-    font-weight: 600;
+.site-brand {
+    color: #111;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
 }
 
-.site-nav a:hover,
-.site-nav a[aria-current="page"] {
-    color: var(--link-color);
+.site-brand:hover {
+    color: #111;
+}
+
+.nav-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid #e8edf3;
+    border-radius: 999px;
+    background: rgba(248, 250, 252, 0.82);
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    padding: 0 13px;
+    border-radius: 999px;
+    color: #505866;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #111;
+    background: #eef4fb;
+}
+
+.nav-links a[aria-current="page"] {
+    color: #111;
+    background: #fff;
+    box-shadow: 0 1px 5px rgba(20, 36, 58, 0.12);
 }
 
 .hero {
@@ -374,7 +411,9 @@ h2 {
 
 @media (max-width: 768px) {
     .site-nav {
-        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
     }
 
     .hero {
