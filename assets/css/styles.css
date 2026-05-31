@@ -173,10 +173,16 @@ h2 {
     gap: 12px;
 }
 
+.project-list li {
+    min-width: 0;
+}
+
 .project-list a {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-width: 0;
+    overflow: hidden;
     border: 1px solid #e8edf3;
     border-radius: 7px;
     background: #fbfcfd;
@@ -192,8 +198,11 @@ h2 {
 }
 
 .project-list img {
+    display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    height: clamp(96px, 12vw, 150px);
+    flex: 0 0 auto;
     object-fit: cover;
     border-radius: 7px 7px 0 0;
     background: var(--surface);
@@ -456,5 +465,9 @@ h2 {
 @media (max-width: 520px) {
     .project-list {
         grid-template-columns: 1fr;
+    }
+
+    .project-list img {
+        height: 160px;
     }
 }
