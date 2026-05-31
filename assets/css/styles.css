@@ -356,31 +356,6 @@ h2 {
     font-size: 1.02rem;
 }
 
-.post table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 0.96rem;
-}
-
-.post th,
-.post td {
-    border: 1px solid var(--border);
-    padding: 10px 12px;
-    text-align: left;
-    vertical-align: top;
-}
-
-.post th {
-    background: var(--surface);
-    color: #222;
-    font-weight: 700;
-}
-
-.math-block {
-    overflow-x: auto;
-}
-
 .back-link {
     display: inline-block;
     margin-bottom: 22px;
